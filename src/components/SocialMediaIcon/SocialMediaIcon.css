@@ -1,0 +1,26 @@
+.social-media-react-icon{
+    color: white;
+    height: 30px;
+    background-color:#3162A4;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 20px;
+
+}
+
+.social-media-react-icon:hover{
+    background-color: white;
+    border: 2px solid #3162A4;
+    color: #3162A4;
+    font-size: 22px;
+}
+.icons-div{
+    padding: 2px;
+    height: 35px;
+    width: 35px;
+    
+}

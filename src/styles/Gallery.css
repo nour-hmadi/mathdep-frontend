@@ -1,0 +1,22 @@
+.home-gallery-images{
+ 
+    width: 23rem;
+    height: 23rem;
+    object-fit: cover;
+    
+}
+
+.image-container-gallery{
+    overflow: hidden;
+    width: 23rem;
+    height: 23rem;
+    
+}
+
+.gallery-container{
+   margin: 100px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 7rem;
+}

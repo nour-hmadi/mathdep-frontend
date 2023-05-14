@@ -1,0 +1,17 @@
+.carousel-container {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1000px;
+    padding: 20px;
+  }
+  
+  .image-container {
+    text-align: center;
+  }
+  
+  .home-carousel-images {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+  }
+  

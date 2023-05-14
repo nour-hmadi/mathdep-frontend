@@ -1,0 +1,30 @@
+.about-us-card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 70%;
+    height:20rem;
+    margin: auto;
+    
+   
+ 
+  
+}
+
+
+
+.aboutus-card-description-image{
+    width: 20rem;
+    height: 20rem;
+   
+}
+.about-info{
+    display: flex;
+    flex-direction: column;
+  
+  
+     align-self: flex-start;
+   
+    
+}
