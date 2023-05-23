@@ -1,0 +1,14 @@
+.home-research-component-container{
+    display: flex;
+    height: 500px;
+    border: 1px solid red;
+    flex-direction: column;
+}
+.row-one-research-container-home-page{
+    height: 400px;
+    width: 400px;
+}
+.image-row-one-research-container-home-page{
+    height: 400px;
+    width: 400px;
+}

@@ -1,11 +1,12 @@
 import React from "react";
-import "./Carousel.css";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import Loader from "../Loader/Loader";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./Carousel.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+import Loader from "../Loader/Loader";
 
 const url = "http://localhost:5000/api/carousel/";
 
@@ -23,6 +24,7 @@ function Carousel() {
       .get(`${url}`)
       .then((response) => {
         setInfo(response.data);
+
         setIsLoading(false);
         // console.log("response.data: " + response.data);
       })
@@ -32,15 +34,33 @@ function Carousel() {
       });
   };
 
+  const CustomPrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <button className="carousel-arrow prev" onClick={onClick}>
+        <i className="fas fa-chevron-left"></i>
+      </button>
+    );
+  };
+
+  const CustomNextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <button className="carousel-arrow next" onClick={onClick}>
+        <i className="fas fa-chevron-right"></i>
+      </button>
+    );
+  };
+
   const settings = {
+    arrows:true,
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
   };
 
   return (

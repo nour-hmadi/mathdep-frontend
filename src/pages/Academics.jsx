@@ -1,8 +1,9 @@
 import React from 'react'
+import '../styles/Academics.css'
 
 function Academics() {
   return (
-    <div>
+    <div className='subjects-syllabus-container'>
       
     </div>
   )

@@ -1,0 +1,84 @@
+.carousel-container {
+  position: relative;
+  opacity: 1;
+  max-width: 100vw;
+  overflow: hidden;
+  height: 500px;
+  /* margin: 0 -8px 0px  px ; */
+  margin-bottom: auto;
+  /* display: flex;
+    gap: 30px; */
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+
+.carousel-arrow.prev {
+  left: 20px;
+  background-color: black;
+  padding: 20px;
+}
+.home-carousel-images{
+  width: 100%;
+  
+}
+.carousel-arrow.next {
+  right: 20px;
+  background-color: black;
+  padding: 20px;
+}
+
+.carousel-arrow i {
+  pointer-events: none;
+  color: red;
+}
+.carousel-arrow.prev:hover {
+  left: 20px;
+}
+
+.carousel-arrow.next {
+  right: 20px;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  /* display: flex; */
+
+}
+
+.slick-dots li {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.slick-dots li.slick-active {
+  background-color: #333;
+}
+.flex----f {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+

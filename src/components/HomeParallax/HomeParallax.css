@@ -1,0 +1,22 @@
+.home-parallax-container {
+  /* The image used */
+  background-image: url("../../assests//mathboard.jpeg");
+
+  /* Set a specific height */
+  min-height: 360px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+  
+}
+.hedear-h1-parallax {
+  /* background-color: rgba(49, 98, 164, 0.8); */
+  height: 360px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgba(11, 34, 57, 0.9);
+}

@@ -1,0 +1,18 @@
+.parallax-details-component{
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    height: 360px;
+    line-height: 25px;
+}
+.parallax-details-component>h1{
+    font-size: 5rem;
+}
+
+
+.icons-parallax{
+    color: white;
+}

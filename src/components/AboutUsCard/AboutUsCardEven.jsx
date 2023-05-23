@@ -7,7 +7,7 @@ function AboutUsCardEven(props) {
   return (
     <div  className="about-us-card-container">
       <img
-        src={`data:image/jpeg;base64,${props.imageSrc}`}
+        src={`${props.imageSrc}`}
         alt="a description for the math department and the math community"
         className="aboutus-card-description-image"
       />

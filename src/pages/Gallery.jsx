@@ -42,7 +42,7 @@ function Gallery() {
             <div key={item.id} className="image-container-gallery">
               <img
                 className="home-gallery-images"
-                src={`data:image/jpeg;base64,${item.image}`}
+                src={item.image.url}
                 alt="carousel image"
               />
             </div>

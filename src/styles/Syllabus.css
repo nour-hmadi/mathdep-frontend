@@ -1,0 +1,38 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
+  .box {
+    width: 100vh;
+    height: 200px;
+    background-color: lightblue;
+    margin: 10px;
+    position: relative;
+    transition: height 0.5s;
+  }
+  
+  .box:hover {
+    height: 500px;
+  }
+  
+  .hidden-paragraph {
+    position: absolute;
+    bottom: -10px;
+    width: 50%;
+   
+    color: black;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  .box:hover .hidden-paragraph {
+    opacity: 1;
+  }
+  .header-hover{
+    height: 150px;
+    background-color: aqua;
+  }

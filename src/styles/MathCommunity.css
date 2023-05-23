@@ -1,0 +1,108 @@
+.before-home-grid-container>p{
+ line-height: 35px;   
+}
+.home-grid {
+    display: flex;
+    justify-content: space-around;
+    width: 98vw;
+    align-items: center;
+    height: 98vh;
+    margin-right: 200px;
+    border-bottom-right-radius: 10px;
+  }
+  .photos-grid-container-home {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 30vw;
+    justify-content: center;
+    align-items: center;
+  }
+  .photos-grid-home {
+    height: 13rem;
+    width: 10rem;
+    border-radius: 20px;
+    transition: transform 0.5s ease-out;
+    border: 1px solid whitesmoe;
+  }
+  .photos-grid-home:hover {
+    transform: scale(1.02);
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+  }
+  .row-3 {
+    align-self: flex-start;
+    margin-top: 3rem;
+  }
+  .row-one {
+    align-self: flex-end;
+    margin-bottom: 6rem;
+  }
+  .before-home-grid-container {
+    display: flex;
+    flex-direction: column;
+  
+    width: 30vw;
+    justify-content: center;
+    align-items: center;
+  }
+  .before-home-grid-container > p {
+  }
+  .before-home-grid-container > h1 > span:first-child {
+    color: #3162a4;
+    font-size: 5rem;
+  }
+  .before-home-grid-container > h1 > span:last-child {
+    color: #3162a4;
+  }
+  
+  .math-com-button {
+    --color: #3162a4;
+    font-family: inherit;
+    display: inline-block;
+    width: 6em;
+    height: 2.6em;
+    line-height: 2.5em;
+    overflow: hidden;
+    margin: 20px;
+    font-size: 17px;
+    z-index: 1;
+    color: white;
+    background-color: #3162a4;
+    border: 2px solid #3162a4;
+    border-radius: 6px;
+    position: relative;
+  }
+  
+  .math-com-button::before {
+    position: absolute;
+    content: "";
+    background: white;
+    width: 150px;
+    height: 200px;
+    z-index: -1;
+    border-radius: 50%;
+  }
+  
+  .math-com-button:hover {
+    color: #3162a4;
+  }
+  
+  .math-com-button:before {
+    top: 100%;
+    left: 100%;
+    transition: 0.3s all;
+  }
+  
+  .math-com-button:hover::before {
+    top: -30px;
+    left: -30px;
+  }
+  
+  
+  

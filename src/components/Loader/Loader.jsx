@@ -1,10 +1,15 @@
 import React from "react";
-import './Loader.css'
+import "./Loader.css";
 
 function Loader() {
   return (
     <div className="loadercont">
-      <div className="loader"></div>
+      <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   );
 }

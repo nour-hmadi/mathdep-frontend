@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/AboutUs.css";
+
 //npm install axios
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -22,34 +22,47 @@ function AboutUs() {
     await axios
       .get(`${url}`)
       .then((response) => {
-        setInfo(response.data);
+        setInfo(response.data.data);
         setIsLoading(false);
-        // console.log("response.data: " + response.data);
+        console.log("response.data: " + response.data.data);
       })
       .catch((error) => {
         console.error(`Error: ${error}`);
         setIsLoading(false);
       });
   };
-
+  console.log("info " + info);
   const cards = info.map((item, index) => {
+    console.log("the object id is : " + item._id)
     if (index % 2 === 0) {
+
       return (
-        <AboutUsCardEven
-          key={item.id}
-          title={item.title}
-          description={item.description}
-          imageSrc={item.image}
-        />
+        <div className="about-us-card-container" key={index}>
+        
+          <img
+            src={item.image.url}
+            alt="a description for the math department and the math community"
+            className="aboutus-card-description-image"
+          />
+          <div className="about-info">
+            <h1 className="about-title">{item.title}</h1>
+            <p className="about-description">{item.description}</p>
+          </div>
+        </div>
       );
     } else if (index % 2 === 1) {
       return (
-        <AboutUsCardOdd
-          key={item.id}
-          title={item.title}
-          description={item.description}
-          imageSrc={item.image}
-        />
+        <div className="about-us-card-container" key={index}>
+          <div className="about-info">
+            <h1 className="about-title">{item.title}</h1>
+            <p className="about-description">{item.description}</p>
+          </div>
+          <img
+            src={item.image.url}
+            alt="a description for the math department and the math community"
+            className="aboutus-card-description-image"
+          />
+        </div>
       );
     }
     return null;
@@ -60,7 +73,9 @@ function AboutUs() {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="about-us-page-cards-container">{cards}</div>
+        <div>
+          <div className="about-us-page-cards-container">{cards}</div>
+        </div>
       )}
     </div>
   );

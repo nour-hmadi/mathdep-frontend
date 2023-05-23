@@ -1,12 +1,20 @@
 import React from "react";
 import "./Footer.css";
+import { useNavigate, NavLink } from "react-router-dom";
+
 import logo from "../../assests/facultyofsciences.jpg";
 import SocialMediaIcon from "../SocialMediaIcon/SocialMediaIcon";
 import { AiFillInstagram } from "react-icons/ai";
 import { GrFacebookOption } from "react-icons/gr";
 import { BsYoutube } from "react-icons/bs";
 import { IoLogoLinkedin } from "react-icons/io";
-
+const navigationStyle = ({ isActive }) => ({
+  color: isActive ? "#3162a4" : "white",
+  textDecoration: "none",
+  ":hover": {
+    color: "red",
+  },
+});
 function Footer() {
   return (
     <div className="footer">
@@ -35,9 +43,16 @@ function Footer() {
             <p>Lebanese University</p>
             <p>hadath Campus</p>
             <p>+961 01 000 000</p>
-            <p>Contact us</p>
+            </div>
+            <div className="footer-section-three">
+          <NavLink to={`/contactus`} style={navigationStyle}>    <p className="footer-links-pages">Contact us</p></NavLink>
+          <NavLink to={`/calendar`} style={navigationStyle}>     <p className="footer-links-pages">Calendar</p></NavLink>
+          <NavLink to={`/news&events`} style={navigationStyle}>  <p className="footer-links-pages">New & Events</p></NavLink>
+          <NavLink to={`/gallery`} style={navigationStyle}>      <p className="footer-links-pages">Gallery</p></NavLink>
+ 
+
+
         </div>
-        <div className="footer-section-three"></div>
         <div className="footer-section-four"></div>
       </div>
       <div className="footer-last-line">
