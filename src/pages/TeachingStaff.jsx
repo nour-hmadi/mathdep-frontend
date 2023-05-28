@@ -4,6 +4,7 @@ import axios from "axios";
 import { TeacherCard } from "../components/TeacherCard/TeacherCard";
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader/Loader";
+import PageLinks from "../components/PageLinks/PageLinks";
 const url = "http://localhost:5000/api/teachercard/";
 
 export const TeachingStaff = () => {
@@ -26,24 +27,10 @@ export const TeachingStaff = () => {
 
   return (
     <div>
-    {isLoading ? <Loader />: (
-    <div className="teaching-staff-page">
-      {teacherCards.map((card) => (
-        <TeacherCard
-        key={card.id}
-          name={card.name}
-          profession={card.profession}
-          position={card.description_title}
-          description={card.description_parag}
-          email={card.email}
-          gatelink={card.platform_link}
-          subjects={card.subject}
-          imageSrc={card.image}
-        />
-      ))}
+   
 
       
-       </div>)}
+      <PageLinks />
     </div>
     
   );

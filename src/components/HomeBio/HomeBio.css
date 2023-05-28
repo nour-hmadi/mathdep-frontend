@@ -1,0 +1,15 @@
+
+.home-bio-container{
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    width: 80%;
+    margin: auto;
+    
+}
+
+.home-bio-container-column-one{
+    line-height: 30px;
+    width: 100%;
+
+}

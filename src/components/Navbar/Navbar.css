@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-between;
   background-color:#162D3F;
-  padding: 25px;
+  padding: 5px;
   /* margin: -8px -8px 0 -8px; */
 }
 .logo-oart-of-the-navbar {
@@ -12,7 +12,6 @@
 }
 .navbar {
   overflow: hidden;
-
   /* color: whitesmoke; */
   display: flex;
   justify-content: flex-end;

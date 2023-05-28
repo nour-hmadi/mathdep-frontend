@@ -11,8 +11,8 @@ function HomeParallax() {
     <div className='home-parallax-container'>
     <div className='hedear-h1-parallax'>
       <ParallaxComponent icon={<FaGraduationCap color="white" className='icons-parallax' />} title="20,000" description="STUDENTS"/>
-      <ParallaxComponent icon={<FaChalkboardTeacher />} title="50" description="STUDENTS"/>
-      <ParallaxComponent icon={<TbReportSearch />} title="112+" description="STUDENTS"/>
+      <ParallaxComponent icon={<FaChalkboardTeacher />} title="50" description="Teachers"/>
+      <ParallaxComponent icon={<TbReportSearch />} title="112+" description="Research"/>
 
     </div>
       

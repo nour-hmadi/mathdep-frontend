@@ -1,9 +1,7 @@
 import React from "react";
 import '../styles/Gallery.css'
-
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import Loader from "../components/Loader/Loader";
 
 const url = "http://localhost:5000/api/gallery/";
@@ -22,7 +20,6 @@ function Gallery() {
       .get(`${url}`)
       .then((response) => {
         setInfo(response.data);
-
         setIsLoading(false);
         // console.log("response.data: " + response.data);
       })
@@ -32,14 +29,16 @@ function Gallery() {
       });
   };
 
+  
+
   return (
     <div>
       {isLoading ? (
         <Loader />
       ) : (
         <div className="gallery-container">
-          {info.map((item) => (
-            <div key={item.id} className="image-container-gallery">
+          {info.map((item, index) => (
+            <div key={index} className="image-container-gallery">
               <img
                 className="home-gallery-images"
                 src={item.image.url}

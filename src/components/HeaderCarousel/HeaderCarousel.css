@@ -6,6 +6,7 @@
   height: 500px;
   /* margin: 0 -8px 0px  px ; */
   margin-bottom: auto;
+
   /* display: flex;
     gap: 30px; */
 }
@@ -82,3 +83,14 @@
   gap: 5px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .carousel-container { position: relative;
+  opacity: 1;
+  max-width: 100vw;
+  overflow: hidden;
+  height: 500px;
+  /* margin: 0 -8px 0px  px ; */
+  margin-bottom: auto;
+
+}
+}

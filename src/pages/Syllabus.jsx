@@ -1,10 +1,10 @@
-import React from 'react'
-import '../styles/Syllabus.css'
+import React from "react";
+import "../styles/Syllabus.css";
 
 function Syllabus() {
   return (
     <div>
-           <div class="container">
+      <div class="container">
         <div class="box" id="box1">
           <div className="header-hover">
             <h2>Div A</h2>
@@ -22,11 +22,7 @@ function Syllabus() {
             glanationabouasdfg hglanationa bouasdfghgl anationabouasdfg
             hglanationa bouasdfghgla nationabouasdfgh glanationaboua
             sdfghglanatio nsdfghglanatio nabouasdfghglanation
-            abouasdfghglanation abouasdfghglanation abouasdfghglanation
-            abouasdfghglanation abouasdfghglanation abouasdfghglanation
-            abouasdfghglanation abouasdfghglanation abouasdfghglanation
-            abouasdfghglanation abouasdfghglanation abouasdfghglanation
-            abouasdfghgjirwygt Div A
+            rwygt Div A
           </p>
         </div>
         <div class="box" id="box2">
@@ -38,9 +34,8 @@ function Syllabus() {
           <p class="hidden-paragraph">Explanation about Div C</p>
         </div>
       </div>
-
     </div>
-  )
+  );
 }
 
-export default Syllabus
+export default Syllabus;

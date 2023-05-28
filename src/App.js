@@ -15,6 +15,7 @@ import Academics from "./pages/Academics";
 import Gallery from "./pages/Gallery";
 import MathCommunity from "./pages/MathCommunity";
 import ContactUs from "./pages/ContactUs";
+import Calendar from "./pages/Calendar";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/gallery" element={<Gallery />} />
           <Route exact path="/mathcommunity" element={<MathCommunity />} />
           <Route exact path="/contactus" element={<ContactUs />} />
+          <Route exact path="/calendar" element={<Calendar />} />
         </Routes>
         <Footer />
         

@@ -4,7 +4,7 @@ import "./Loader.css";
 function Loader() {
   return (
     <div className="loadercont">
-      <div class="loader">
+      <div className="loader">
         <span></span>
         <span></span>
         <span></span>

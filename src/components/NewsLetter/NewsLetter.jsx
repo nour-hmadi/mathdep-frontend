@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './NewsLetter.css'
 
 const NewsletterForm = () => {
   const [email, setEmail] = useState('');
@@ -18,15 +19,19 @@ const NewsletterForm = () => {
   return (
     <div>
       {!submitted ? (
-        <form onSubmit={handleSubmit}>
-          <input
+        <div className='newsletter-form-subscription'>
+        <p>Subscribe To Our NewsLetter</p>
+        <form className='form-newsletter-footer' onSubmit={handleSubmit}>
+        
+          <input className='input-form-newsletter-footer'
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
           />
-          <button type="submit">Subscribe</button>
+          <button className='subscribe-btn-form-newsletter-footer' type="submit">Subscribe</button>
         </form>
+        </div>
       ) : (
         <p>Thank you for subscribing!</p>
       )}

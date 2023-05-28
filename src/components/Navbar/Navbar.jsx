@@ -10,11 +10,8 @@ import DepartmentLogo from "../DepartmentLogo/DepartmentLogo";
 import HeaderCarousel from "../HeaderCarousel/HeaderCarousel";
 
 const navigationStyle = ({ isActive }) => ({
-  color: isActive ? "#3162a4" : "black",
+  color: isActive ? "#3162a4" : "white",
   textDecoration: "none",
-  ":hover": {
-    color: "red",
-  },
 });
 
 function Navbar() {
@@ -23,10 +20,9 @@ function Navbar() {
     navRef.current.classList.toggle("responsive_nav");
   };
 
-  const navigate = useNavigate();
+  
   return (
-    // <div>
-    //   <HeaderCarousel />
+   
     
     <div className="navbar-container">
       <div className="logo-oart-of-the-navbar">
@@ -37,13 +33,11 @@ function Navbar() {
           <p className="home">Home</p>
         </NavLink>
 
-        <NavLink to={`/aboutus`} style={navigationStyle}>
-          <p className="home">About us</p>
-        </NavLink>
+        <NavLink to={`/aboutus`} style={navigationStyle}><p className="home">About us</p></NavLink>
 
-        <NavLink to={`/gallery`} style={navigationStyle}>
+        {/* <NavLink to={`/gallery`} style={navigationStyle}>
           <p className="home">Gallery</p>
-        </NavLink>
+        </NavLink> */}
 
         <NavLink to={`/academics`} style={navigationStyle}>
           <p className="home">Academics </p>{" "}
@@ -53,13 +47,13 @@ function Navbar() {
           <p className="home">Teaching Staff</p>
         </NavLink>
 
-        <NavLink to={`/research`} style={navigationStyle}>
+        {/* <NavLink to={`/research`} style={navigationStyle}>
           <p className="home">Research</p>
-        </NavLink>
+        </NavLink> */}
 
-        <NavLink to={`/research`} style={navigationStyle}>
+        {/* <NavLink to={`/research`} style={navigationStyle}>
           <p className="home">Resources</p>
-        </NavLink>
+        </NavLink> */}
 
         <NavLink to={`/mathcommunity`} style={navigationStyle}>
           <p className="home">Math Community</p>
@@ -77,6 +71,7 @@ function Navbar() {
           </div>
         </div>
 
+        
         <button onClick={showNavbar} className="nav-btn nav-close-btn">
           <FaTimes />
         </button>
@@ -85,7 +80,7 @@ function Navbar() {
         <FaBars />
       </button>
     </div>
-    // </div>
+   
   );
 }
 

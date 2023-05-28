@@ -1,15 +1,17 @@
+.contact-page-container {
+}
+.filter-top-layer{
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 
-.contact-page-container{
-
-    
-     
-     background-color: whitesmoke;
 }
 .contact-page {
   /* // background: linear-gradient(#1b1b1b 80%, grey 20%); // */
-  height: 100vh;
+  height: 80vh;
   display: flex;
-  
+
   justify-content: space-evenly;
   align-items: center;
 }
@@ -21,8 +23,7 @@
   align-items: center;
   height: 400px;
   width: 600px;
-
-  border: 1px solid red;
+  gap: 20px;
 }
 .transparent-dotss {
   background: url('data:image/svg+xml,%3Csvg width="10" height="10" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="5" cy="5" r="1" fill-opacity="0.6" fill="%23ffffff" /%3E%3C/svg%3E')
@@ -36,10 +37,8 @@
 .contact_form_conn {
   position: relative;
 }
-
+/* 
 .filter-top-layer{
   background-color: rgba(11,34,57, 0.4);
   height: 600px;
-  width: 100vw;
-
-}
+  width: 100vw;} */

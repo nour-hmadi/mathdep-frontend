@@ -1,0 +1,30 @@
+.newsletter-form-subscription{
+    display: flex;
+    flex-direction: column;
+
+}
+.form-newsletter-footer{
+    display: flex;
+    flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.input-form-newsletter-footer{
+    height: 50px;
+    width: 260px;
+    border-radius: 3px;
+
+}
+
+
+.subscribe-btn-form-newsletter-footer{
+
+    justify-self: center;
+    display: flex;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    background-color: #EEAF16;
+    color: white;
+  
+}

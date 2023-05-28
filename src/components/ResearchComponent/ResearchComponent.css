@@ -1,14 +1,96 @@
-.home-research-component-container{
-    display: flex;
-    height: 500px;
-    border: 1px solid red;
-    flex-direction: column;
+.home-research-component-container {
+  display: flex;
+  height: auto;
+  width: 400px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
 }
-.row-one-research-container-home-page{
-    height: 400px;
-    width: 400px;
+.row-one-research-container-home-page {
+  height: 250px;
+  width: 400px;
 }
-.image-row-one-research-container-home-page{
-    height: 400px;
-    width: 400px;
+.row-one-research-container-home-page > img {
+  height: 300px;
+  width: 400px;
+  /* opacity: 0.4; */
+}
+.blue-title-research-container-row-one {
+  background-color: #0b2239;
+  height: 50px;
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  color: white;
+  align-self: flex-start;
+  padding: 2px 5px;
+}
+.section-research-home-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  gap: 40px;
+  flex-wrap: wrap;
+  width: 98vw;
+  overflow: hidden;
+  padding: 20px 0px 90px 0px;
+}
+.row-two-container-research-home-page {
+  display: flex;
+  flex-direction: column;
+}
+.row-two-container-research-home-page > h1 {
+  width: 350px;
+  color: #eeaf16;
+  cursor: pointer;
+  font-weight: 600;
+  margin: auto;
+  font-family: "calistogaregular";
+}
+.row-two-container-research-home-page > p {
+  width: 350px;
+  line-height: 25px;
+}
+.row-two-container-research-home-page > h1:hover {
+  width: 350px;
+  color: #0b2239;
+  font-weight: 600;
+}
+.agenda-title {
+  padding-top: 20px;
+  font-size: 2.5em;
+  color: white;
+  text-align: center;
+  font-family: "calistogaregular";
+  color: #0b2239;
+  font-weight: 700;
+}
+.show-more-research-section-home-page {
+  background-color: #eeaf16;
+  height: 50px;
+  display: flex;
+  font-weight: 700;
+  font-family: "calistogaregular";
+  color: white;
+  align-items: center;
+  padding: 2px 10px;
+  border: none;
+  font-size: large;
+  cursor: pointer;
+}
+.section-container-research-home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 90px;
+ 
+}
+
+
+.show-more-research-section-home-page:hover{
+  color: #0b2239;
 }
