@@ -1,11 +1,11 @@
 .teaching-staff-page {
-    /* display: flex; */
-    /* flex-direction: row; */ 
-    /* gap: 1000rem; */
-    align-items: center;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 1rem;
-  }
-  
+  display: flex;
+  flex-direction: row;
+  gap: 10rem;
+  align-items: center;
+  height: auto;
+ 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}

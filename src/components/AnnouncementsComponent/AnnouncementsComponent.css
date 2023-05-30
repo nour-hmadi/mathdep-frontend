@@ -18,6 +18,7 @@
   max-width: 98vw;
   overflow: hidden;
   height: auto;
+  padding-bottom:40px ;
 }
 .calendar-one-day-container {
   height: 500px;

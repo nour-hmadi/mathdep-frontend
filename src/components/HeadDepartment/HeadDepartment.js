@@ -23,39 +23,27 @@ function HeadDepartment() {
   };
   const cards = info.map((object, index) => {
     return (
-      <div  className="head-dep-">
-        <div className="about--section-one-container">
-          <div key={index} className="blue-filter">
-            <div className="about--section-one-column-one">
-              <p className="agenda-title-hd"> Head Department</p>
-              <p className="about--section-one-title">{object.name}</p>
-              <p className="about--section-one-description">
-                {object.description}
-              </p>
-            
-                  <div className="email-icon-headdep">
-                    <MdOutlineMarkEmailRead />{object.email}
-                  </div>
-                 
-              
-            </div>
-            <div className="about--section-one-column-two">
-              <div className="about--section-one-image-backgroud">
-                <img
-                  src={object.image.url}
-                  alt="image"
-                  className="about-section-one-image"
-                />
-                <div className="transparent-dots"></div>
-              </div>
-            </div>
-          </div>
+      <div key={index} className="head-dep-item">
+        <div className="description-container-head-dep">
+          <h1 className="head-dep-name">{object.name}</h1>
+          <p className="head-dep-description">{object.description}</p>
+          <h5>{object.email}</h5>
         </div>
+
+        <div className="image-container-head-dep">
+        <img src={object.image.url} alt="image of the head dep" className="image-head-dep"/></div>
       </div>
     );
     return null;
   });
-  return <div>{cards}</div>;
+  return (
+    <div className="head-dep-section-home-page">
+      <div className="blue-filter">
+        <h1 className="head-dep-title-of-the-section">Head of the Deapartment</h1>
+        <div>{cards}</div>
+      </div>
+    </div>
+  );
 }
 
 export default HeadDepartment;

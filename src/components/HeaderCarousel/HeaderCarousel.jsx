@@ -44,17 +44,17 @@ const HeaderCarousel = () => {
       .then((response) => {
         setInfo(response.data.data);
         setIsLoading(false);
-        console.log("response.data: " + response.data.data);
+        // console.log("response.data: " + response.data.data);
       })
       .catch((error) => {
         console.error(`Error: ${error}`);
         setIsLoading(false);
       });
   };
-  console.log("info " + info);
+  // console.log("info " + info);
 
   const cards = info.map((item, index) => {
-    console.log("the object id is : " + item._id);
+    // ("the object id is : " + item._id);
 
     return (
       <div key={index}>

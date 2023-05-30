@@ -16,7 +16,9 @@ import Gallery from "./pages/Gallery";
 import MathCommunity from "./pages/MathCommunity";
 import ContactUs from "./pages/ContactUs";
 import Calendar from "./pages/Calendar";
-
+import ResearchId from "./components/ResearchId/ResearchId";
+import Auth from "./pages/Auth/auth";
+import Scroll from './components/ScrolltoTop/Scroll.jsx'
 
 function App() {
   return (
@@ -33,8 +35,14 @@ function App() {
           <Route exact path="/mathcommunity" element={<MathCommunity />} />
           <Route exact path="/contactus" element={<ContactUs />} />
           <Route exact path="/calendar" element={<Calendar />} />
+          <Route path="/research/:id" element={<ResearchId />} />
+          <Route path="/login" element={<Auth />} />
+          
+
+
         </Routes>
         <Footer />
+        <Scroll />
         
       </div>
     

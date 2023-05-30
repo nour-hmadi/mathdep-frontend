@@ -44,7 +44,7 @@ function CalendarComponent() {
       .catch((error) => console.error(`Error: ${error}`));
   };
   const anncards = info.map((object, index) => {
-    console.log(object, index);
+    // console.log(object, index);
 
     if (object.type === "announcement") {
       return (
@@ -78,17 +78,12 @@ function CalendarComponent() {
       );
     }
   });
-  console.log( "anncards: " + anncards);
+  // console.log("anncards: " + anncards);
   return (
     <div className="announcements-hero-section-of-the-home-page">
       <p className="agenda-title">News & Events</p>
-      <div
-        className="announcements-section-of-the-home-page"
-        >
-     
-      {anncards}
-   
-      </div>
+      <div className="announcements-section-of-the-home-page">{anncards}</div>
+      <button className="show-more-research-section-home-page">Show More</button>
     </div>
   );
 }

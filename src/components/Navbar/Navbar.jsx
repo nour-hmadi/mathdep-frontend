@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState , useEffect} from "react";
 import "./Navbar.css";
 import { useRef } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
@@ -14,18 +14,29 @@ const navigationStyle = ({ isActive }) => ({
   textDecoration: "none",
 });
 
+const logOut = () => {
+  window.sessionStorage.clear();
+  window.location.reload(true);
+};
+
 function Navbar() {
+  const [isLoggedin , setIsLoggedin ] = useState(false)
   const navRef = useRef();
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
+useEffect(() => {
+  if (sessionStorage.getItem("token")){
+  setIsLoggedin(true);
+  console.log(sessionStorage.getItem("token"));
 
-  
+}},[]);
   return (
    
     
     <div className="navbar-container">
       <div className="logo-oart-of-the-navbar">
+     
         <DepartmentLogo />
       </div>
       <div ref={navRef} className="navbar">
@@ -60,15 +71,16 @@ function Navbar() {
         </NavLink>
 
         <div className="dropdown">
-          <button className="dropbtn">
-            <span>
-              <AiOutlineUser />
+      
+          {isLoggedin ?   <NavLink to={`/`}><button className="dropbtn" onClick={logOut} >
+           <span>
+              <AiOutlineUser />logout
             </span>
-          </button>
-          <div className="dropdown-menu" id="last-dropdown-menu">
-            <a href="#" className="drop-down-items">log in</a>
-            <a href="#" className="drop-down-items">sign up</a>
-          </div>
+          </button></NavLink> :  <NavLink to={`/login`}><button className="dropbtn">
+           <span>
+              <AiOutlineUser />login
+            </span>
+          </button></NavLink>  }
         </div>
 
         
@@ -79,6 +91,7 @@ function Navbar() {
       <button onClick={showNavbar} className="nav-btn">
         <FaBars />
       </button>
+      {/* {isLoggedin ? <button > log out </button> :<h1>hello you are not logged in</h1>  } */}
     </div>
    
   );

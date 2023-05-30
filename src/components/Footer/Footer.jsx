@@ -46,7 +46,7 @@ function Footer() {
             <p>+961 01 000 000</p>
             </div>
             <div className="footer-section-three">
-          <NavLink to={`/teachingstaff`} style={navigationStyle}>    <p className="footer-links-pages">Contact us</p></NavLink>
+          <NavLink to={`/contactus`} style={navigationStyle}>    <p className="footer-links-pages">Contact us</p></NavLink>
           <NavLink to={`/calendar`} style={navigationStyle}>     <p className="footer-links-pages">Calendar</p></NavLink>
           <NavLink to={`/news&events`} style={navigationStyle}>  <p className="footer-links-pages">New & Events</p></NavLink>
           <NavLink to={`/gallery`} style={navigationStyle}>      <p className="footer-links-pages">Gallery</p></NavLink>

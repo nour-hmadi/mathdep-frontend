@@ -70,9 +70,9 @@
   height: 40px;
 }
 
-.dropdown:hover {
+/* .dropdown:hover {
   background-color: whitesmoke;
-}
+} */
 
 /* Dropdown content (hidden by default) */
 .dropdown-menu {

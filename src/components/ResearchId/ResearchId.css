@@ -1,0 +1,46 @@
+.research-solo-container-page{
+display: flex;
+flex-direction: column;
+padding: 50px;
+width: 60vw;
+}
+.square-blue-filter-research {
+  background-color: #0b2239;
+  height: 50px;
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  color: white;
+  align-self: flex-start;
+  padding: 2px 5px;
+}
+.list-links{
+color: #0b2239;
+}
+.list-links:active{
+    color:#0b2239;
+}
+a{
+    text-decoration: none;
+    color:#0b2239;
+    /* font-weight: 700; */
+}
+a:hover{
+    color: #3162A4;
+    
+}
+.research-main-title, .thesis-of-the-research{
+line-height: 45px;
+}
+.research-paragraph{
+    line-height: 30px;
+}
+.research-id-page-main-image{
+    width: 65vw;
+}
+.image-container-research-id-page{
+    position: relative;
+    width: auto;
+    overflow: hidden;
+    height: auto;
+}
