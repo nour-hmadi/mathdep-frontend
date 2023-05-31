@@ -4,6 +4,7 @@ import "./SectionTwo.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const api_url = "http://localhost:5000/api/user/";
 
@@ -64,9 +65,8 @@ function SectionTwo() {
 
   return (
     <div className="about--section-two-container">
-      <h1> Professional Team</h1>
+      <h1>Teaching Staff</h1>
       <hr className="horizontal" />
-      <p>Quisque sed tellus nullam biben the volutpat dignissim pretium.</p>
       <div className="test">
         {prevButtonDisabled ? (
           <Button
@@ -112,7 +112,7 @@ function SectionTwo() {
           </Button>
         )}
       </div>
-      <button className="show-more-research-section-home-page">Show More</button>
+     <NavLink to={`teachingstaff`}><button className="show-more-research-section-home-page">Show More</button></NavLink> 
 
     </div>
   );

@@ -21,6 +21,7 @@ import Auth from "./pages/Auth/auth";
 import Scroll from './components/ScrolltoTop/Scroll.jsx'
 import ResearchPage from "./pages/ResearchPage";
 import NewsnEvents from "./pages/NewsnEvents";
+import PendingPosts from "./pages/PendingPosts";
 
 function App() {
   return (
@@ -41,6 +42,8 @@ function App() {
           <Route path="/login" element={<Auth />} />
           <Route path="/researchs" element={<ResearchPage />} />
           <Route path="/news&events" element={<NewsnEvents />} />
+          <Route path="/pendingposts" element={<PendingPosts />} />
+          
 
 
 

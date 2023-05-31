@@ -22,12 +22,9 @@ color: #0b2239;
 }
 a{
     text-decoration: none;
-    color:#0b2239;
-    /* font-weight: 700; */
 }
 a:hover{
-    color: #3162A4;
-    
+    color: #3162A4;  
 }
 .research-main-title, .thesis-of-the-research{
 line-height: 45px;

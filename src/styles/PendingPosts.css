@@ -1,0 +1,17 @@
+.pending-post-container {
+  background-color: whitesmoke;
+  border-left: 7px solid blue;
+  width: 40vw;
+  height: auto;
+
+}
+
+.post-description {
+  line-height: 30px;
+}
+.pending-posts-container-page{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}

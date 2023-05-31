@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { useRef } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
@@ -20,24 +20,28 @@ const logOut = () => {
 };
 
 function Navbar() {
-  const [isLoggedin , setIsLoggedin ] = useState(false)
+  const [isLoggedin, setIsLoggedin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navRef = useRef();
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
-useEffect(() => {
-  if (sessionStorage.getItem("token")){
-  setIsLoggedin(true);
-  console.log(sessionStorage.getItem("token"));
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      setIsLoggedin(true);
+      console.log(sessionStorage.getItem("token"));
+    }
+  }, []);
+  useEffect(() => {
+    if (sessionStorage.getItem("isAdmin") === "true") {
+      setIsAdmin(true);
+    }
+  }, []);
 
-}},[]);
-
+  
   return (
-   
-    
     <div className="navbar-container">
       <div className="logo-oart-of-the-navbar">
-     
         <DepartmentLogo />
       </div>
       <div ref={navRef} className="navbar">
@@ -45,7 +49,9 @@ useEffect(() => {
           <p className="home">Home</p>
         </NavLink>
 
-        <NavLink to={`/aboutus`} style={navigationStyle}><p className="home">About us</p></NavLink>
+        <NavLink to={`/aboutus`} style={navigationStyle}>
+          <p className="home">About us</p>
+        </NavLink>
 
         {/* <NavLink to={`/gallery`} style={navigationStyle}>
           <p className="home">Gallery</p>
@@ -71,30 +77,39 @@ useEffect(() => {
           <p className="home">Math Community</p>
         </NavLink>
 
-       {/* {(isLoggedin  && isAdmin )?  <NavLink to={`/pendingposts`} style={navigationStyle}>
-          <p className="home">PendingPosts</p>
-        </NavLink> :null } */}
-
-        {/* {(isLoggedin  && isAdmin )?  <NavLink to={`/students`} style={navigationStyle}>
-          <p className="home">Students</p>
-        </NavLink> :null } */}
-
-       
+        {isAdmin ? (
+          <NavLink to={`/pendingposts`} style={navigationStyle}>
+            <p className="home">PendingPosts</p>
+          </NavLink>
+        ) : null}
+        {isAdmin ? (
+          <NavLink to={`/students`} style={navigationStyle}>
+            <p className="home">Students</p>
+          </NavLink>
+        ) : null}
 
         <div className="dropdown">
-      
-          {isLoggedin ?   <NavLink to={`/`}><button className="dropbtn" onClick={logOut} >
-           <span>
-              <AiOutlineUser />logout
-            </span>
-          </button></NavLink> :  <NavLink to={`/login`}><button className="dropbtn">
-           <span>
-              <AiOutlineUser />login
-            </span>
-          </button></NavLink>  }
+          {isLoggedin ? (
+            <NavLink to={`/`}>
+              <button className="dropbtn" onClick={logOut}>
+                <span>
+                  <AiOutlineUser />
+                  logout
+                </span>
+              </button>
+            </NavLink>
+          ) : (
+            <NavLink to={`/login`}>
+              <button className="dropbtn">
+                <span>
+                  <AiOutlineUser />
+                  login
+                </span>
+              </button>
+            </NavLink>
+          )}
         </div>
 
-        
         <button onClick={showNavbar} className="nav-btn nav-close-btn">
           <FaTimes />
         </button>
@@ -104,7 +119,6 @@ useEffect(() => {
       </button>
       {/* {isLoggedin ? <button > log out </button> :<h1>hello you are not logged in</h1>  } */}
     </div>
-   
   );
 }
 
