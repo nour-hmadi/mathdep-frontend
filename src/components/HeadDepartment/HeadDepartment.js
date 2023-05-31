@@ -4,7 +4,7 @@ import axios from "axios";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import "./SectionOne.css";
 
-const url = "http://localhost:5000/api/headdepartment/";
+const url = "https://mathdep.onrender.com/api/headdepartment/";
 
 function HeadDepartment() {
   const [info, setInfo] = useState([]);

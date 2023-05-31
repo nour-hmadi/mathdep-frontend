@@ -5,10 +5,10 @@ import axios from "axios";
 import "../styles/PendingPosts.css";
 import avatar from "../assests/megaphone.png";
 
-const url = "http://localhost:5000/api/posts/";
+const url = "https://mathdep.onrender.com/api/posts/";
 
 const Delete = async (id) => {
-  const response = await axios.delete(`http://localhost:5000/api/posts/${id}`);
+  const response = await axios.delete(`https://mathdep.onrender.com/api/posts/${id}`);
   console.log(response);
 };
 

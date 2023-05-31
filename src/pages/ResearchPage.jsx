@@ -5,7 +5,7 @@ import axios from "axios";
 import Loader from "../components/Loader/Loader";
 import { NavLink } from "react-router-dom";
 import board from "../assests/unsplash.jpg";
-const url = "http://localhost:5000/api/research/";
+const url = "https://mathdep.onrender.com/api/research/";
 
 function ResearchPage() {
   const [info, setInfo] = useState([]);

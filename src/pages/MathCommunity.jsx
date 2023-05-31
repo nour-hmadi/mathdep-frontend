@@ -4,7 +4,7 @@ import "../styles/MathCommunity.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const url = "http://localhost:5000/api/posts/";
+const url = "https://mathdep.onrender.com/api/posts/";
 
 function MathCommunity() {
   const [info, setInfo] = useState([]);

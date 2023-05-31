@@ -6,7 +6,7 @@ import axios from "axios";
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-const api_url = "http://localhost:5000/api/user/";
+const api_url = "https://mathdep.onrender.com/api/user/";
 
 function SectionTwo() {
   const [info, setInfo] = useState([]);

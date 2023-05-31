@@ -8,7 +8,7 @@ import axios from "axios";
 import loudspeakericontwo from "../../assests/microphone.png";
 import { BsCalendar4Event } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
-const url = "http://localhost:5000/api/announcements/";
+const url = "https://mathdep.onrender.com/api/announcements/";
 
 function CalendarComponent() {
   const [info, setInfo] = useState([]);

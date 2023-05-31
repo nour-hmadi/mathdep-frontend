@@ -9,7 +9,7 @@ import loudspeakericontwo from "../assests/microphone.png";
 import { BsCalendar4Event } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 
-const url = "http://localhost:5000/api/announcements/";
+const url = "https://mathdep.onrender.com/api/announcements/";
 
 
 function NewsnEvents() {
@@ -97,7 +97,7 @@ export default NewsnEvents
 // import Loader from "../components/Loader/Loader";
 // import { NavLink } from "react-router-dom";
 
-// const url = "http://localhost:5000/api/announcements/";
+// const url = "https://mathdep.onrender.com/api/announcements/";
 
 // function NewsnEvents() {
 //   const [info, setInfo] = useState([]);

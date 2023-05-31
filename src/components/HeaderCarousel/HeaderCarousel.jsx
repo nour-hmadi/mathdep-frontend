@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import logo from "../../assests/wallpaper.jpg";
 import "./HeaderCarousel.css";
 
-const url = "http://localhost:5000/api/carousel/";
+const url = "https://mathdep.onrender.com/api/carousel/";
 
 
 const HeaderCarousel = () => {

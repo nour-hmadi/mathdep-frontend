@@ -18,7 +18,7 @@ function ResearchId() {
       setIsLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/research/${researchId.id}`
+          `https://mathdep.onrender.com/api/research/${researchId.id}`
         );
         setInfo(response.data.data);
         setImge(response.data.data.image.url)

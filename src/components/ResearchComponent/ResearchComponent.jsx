@@ -5,7 +5,7 @@ import "./ResearchComponent.css";
 import Loader from "../Loader/Loader";
 import { NavLink } from "react-router-dom";
 
-const url = "http://localhost:5000/api/research/";
+const url = "https://mathdep.onrender.com/api/research/";
 
 function ResearchComponent() {
   const [info, setInfo] = useState([]);

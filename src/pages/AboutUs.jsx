@@ -8,7 +8,7 @@
 // import AboutUsCardEven from "../components/AboutUsCard/AboutUsCardEven.jsx";
 // import AboutUsCardOdd from "../components/AboutUsCard/AboutUsCardOdd.jsx";
 // import Loader from "../components/Loader/Loader";
-// const url = "http://localhost:5000/api/aboutus/";
+// const url = "https://mathdep.onrender.com/api/aboutus/";
 
 // function AboutUs() {
 //   const [info, setInfo] = useState([]);

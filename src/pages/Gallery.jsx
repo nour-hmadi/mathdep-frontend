@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/Loader/Loader";
 
-const url = "http://localhost:5000/api/gallery/";
+const url = "https://mathdep.onrender.com/api/gallery/";
 
 function Gallery() {
   const [info, setInfo] = useState([]);

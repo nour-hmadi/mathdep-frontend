@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Loader from "../components/Loader/Loader";
 import PageLinks from "../components/PageLinks/PageLinks";
 import ResearchId from "../components/ResearchId/ResearchId";
-const url = "http://localhost:5000/api/user/";
+const url = "https://mathdep.onrender.com/api/user/";
 
 
 
