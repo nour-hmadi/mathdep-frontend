@@ -48,7 +48,7 @@ function SectionTwo() {
   // console.log("filtered:" + filteredCards.length);
   // console.log("info:" + info.length);
   // console.log("items:" + numItems);
-  console.log("IMAGE", img);
+  // console.log("IMAGE", img);
   const cards = filteredCards
     .slice(startIndex, startIndex + numItems)
     .map((object) => {

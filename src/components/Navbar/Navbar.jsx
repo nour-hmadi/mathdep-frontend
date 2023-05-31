@@ -31,6 +31,7 @@ useEffect(() => {
   console.log(sessionStorage.getItem("token"));
 
 }},[]);
+
   return (
    
     
@@ -69,6 +70,16 @@ useEffect(() => {
         <NavLink to={`/mathcommunity`} style={navigationStyle}>
           <p className="home">Math Community</p>
         </NavLink>
+
+       {/* {(isLoggedin  && isAdmin )?  <NavLink to={`/pendingposts`} style={navigationStyle}>
+          <p className="home">PendingPosts</p>
+        </NavLink> :null } */}
+
+        {/* {(isLoggedin  && isAdmin )?  <NavLink to={`/students`} style={navigationStyle}>
+          <p className="home">Students</p>
+        </NavLink> :null } */}
+
+       
 
         <div className="dropdown">
       

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import loudspeakericontwo from "../../assests/microphone.png";
 import { BsCalendar4Event } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 const url = "http://localhost:5000/api/announcements/";
 
 function CalendarComponent() {
@@ -82,8 +83,8 @@ function CalendarComponent() {
   return (
     <div className="announcements-hero-section-of-the-home-page">
       <p className="agenda-title">News & Events</p>
-      <div className="announcements-section-of-the-home-page">{anncards}</div>
-      <button className="show-more-research-section-home-page">Show More</button>
+      <div className="announcements-section-of-the-home-page">{anncards.splice(info.length - 3 ,info.length )}</div>
+     <NavLink to={`/news&events`}><button className="show-more-research-section-home-page">Show More</button></NavLink> 
     </div>
   );
 }

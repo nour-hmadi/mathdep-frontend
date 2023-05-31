@@ -10,6 +10,7 @@
 }
 .announcements-section-of-the-home-page {
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
   gap: 40px;

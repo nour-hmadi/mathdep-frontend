@@ -19,6 +19,8 @@ import Calendar from "./pages/Calendar";
 import ResearchId from "./components/ResearchId/ResearchId";
 import Auth from "./pages/Auth/auth";
 import Scroll from './components/ScrolltoTop/Scroll.jsx'
+import ResearchPage from "./pages/ResearchPage";
+import NewsnEvents from "./pages/NewsnEvents";
 
 function App() {
   return (
@@ -37,7 +39,9 @@ function App() {
           <Route exact path="/calendar" element={<Calendar />} />
           <Route path="/research/:id" element={<ResearchId />} />
           <Route path="/login" element={<Auth />} />
-          
+          <Route path="/researchs" element={<ResearchPage />} />
+          <Route path="/news&events" element={<NewsnEvents />} />
+
 
 
         </Routes>

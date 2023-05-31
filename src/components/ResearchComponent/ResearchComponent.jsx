@@ -10,7 +10,7 @@ const url = "http://localhost:5000/api/research/";
 function ResearchComponent() {
   const [info, setInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const maxLength = 100
   useEffect(() => {
     getAllInfo();
   }, []);
@@ -40,7 +40,7 @@ function ResearchComponent() {
         <div className="row-two-container-research-home-page">
           <h2 className="blue-title-research-container-row-one">Research</h2>
           <h1>{item.title}</h1>
-          <p>{item.description}..<span> <NavLink to={`/research/${item._id}`} >find out more</NavLink></span></p>
+          <p>{item.description.slice(0, maxLength)}..<span> <NavLink to={`/research/${item._id}`} >find out more</NavLink></span></p>
         </div>
       </div>
     );
@@ -53,8 +53,8 @@ function ResearchComponent() {
         <div className="section-container-research-home-page">
           <p className="agenda-title"> Now at the Department of Mathematics</p>
 
-          <div className="section-research-home-page">{cards}</div>
-        <button className="show-more-research-section-home-page">Show More</button>
+          <div className="section-research-home-page">{cards.slice(0, 3)}</div>
+       <NavLink to={`/researchs`} ><button className="show-more-research-section-home-page">Show More</button></NavLink>
         </div>
       )}
     </div>

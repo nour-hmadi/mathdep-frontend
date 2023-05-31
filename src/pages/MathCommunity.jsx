@@ -1,62 +1,54 @@
 import React from "react";
-import "../styles/Home.css";
+import avatar from "../assests/imagetwo.png";
 import "../styles/MathCommunity.css";
-import one from "../../src/assests/imageone.png";
-import two from "../../src/assests/imagetwo.png";
-import three from "../../src/assests/imagethree.png";
-import four from "../../src/assests/imagefour.png";
-import five from "../../src/assests/imagefive.png";
-import six from "../../src/assests/imagesix.png";
-import seven from "../../src/assests/imageseven.png";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+const url = "http://localhost:5000/api/posts/";
 
 function MathCommunity() {
-  return (
-    <div>
-      <div className="home-grid">
-        <div className="before-home-grid-container">
-          <h1>
-            Welcome to the students <span>community</span>
-            <br /> of <span>Mathematics</span>
-          </h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at
-            lacinia ligula. Vestue vel dapibus mi. Nulla facilisi. Nullam
-            gravida feugiat mauris, sit amet malesuada dui facilisis at. Donec
-            vehicula finibus diam, a sollicitudin massa molestie id. Nulla vel
-            pulvinar justo. Nullam volutpat eleifend erat ut ultrices. Proin
-            interdum libero ut quam semper vestibulum. Sed mollis velit id
-            libero viverra, vitae placerat urna vulputate. Curabitur non tellus
-            vitae erat egestas tempus. Vestibulum ultricies justo sed lectus
-            scelerisque, eu laoreet justo dignissim
-          </p>
-          <button className="math-com-button">Join Us!</button>
-        </div>
-        <div className="photos-grid-container-home">
-          <div className="row-one row">
-            <img src={one} className="photos-grid-home" />
-            <img src={two} className="photos-grid-home" />
-          </div>
-          <div className="row-3 row">
-            <img src={three} className="photos-grid-home" />
-            <img src={four} className="photos-grid-home" />
-            <img src={five} className="photos-grid-home" />
-          </div>
-          <div className="row-two row">
-            <img src={six} className="photos-grid-home" />
-            <img src={seven} className="photos-grid-home" />
-            <img src={one} className="photos-grid-home" />
-          </div>
-          <div className="row-two row">
-            <img src={three} className="photos-grid-home" />
-            <img src={five} className="photos-grid-home" />
+  const [info, setInfo] = useState([]);
+
+  useEffect(() => {
+    getAllInfo();
+  }, []);
+
+  const getAllInfo = async () => {
+   
+    await axios
+      .get(`${url}`)
+      .then((response) => {
+        setInfo(response.data);
+    
+        // console.log("response.data: " + response.data.data);
+      })
+      .catch((error) => {
+        console.error(`Error: ${error}`);
+        
+      });
+  };
+  const filteredCards = info.filter((item) => item.status === true);
+  const cards = filteredCards.map((item, index) => {
+    
+    return (
+      <div key={index}>
+        <div className="post_header">
+          <img className="users_avatar" alt="user's avatar" src={item.image} />
+          <div className="post_definition">
+            <p className="post_header_paragraph-one">{item.user}</p>
+            <p className="post_header_paragraph-two">{item.createdAt}</p>
           </div>
         </div>
+        <div className="post_question">
+          <p>{item.title}</p>
+          
+          <p>{item.description}</p>
+        </div>
       </div>
-      <div className="wave-container">
-        <div className="wave-two"></div>
-      </div>
-    </div>
-  );
+    );
+  });
+
+  return <div>{cards}</div>;
 }
 
 export default MathCommunity;

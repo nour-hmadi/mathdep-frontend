@@ -106,3 +106,34 @@
   
   
   
+
+
+
+  /*posts users */
+  .post_header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+  .users_avatar{
+    height: 40px;
+    width:  40px;
+    border-radius: 50%;
+
+  }
+  .post_definition{
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+.post_header_paragraph{
+font-weight: 700;
+color: red;
+}
+  .post_header_paragraph{
+    margin: 0px;
+
+  }
+

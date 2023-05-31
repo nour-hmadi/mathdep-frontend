@@ -5,7 +5,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 99vw;
+  width: 99.5vw;
 }
 .blue-filter {
   background-color: rgba(9, 22, 34, 0.95);
@@ -16,8 +16,7 @@
   align-items: center;
   justify-content: center;
   color: white;
- 
-  
+
   gap: 30px;
 }
 .head-dep-item {
@@ -27,24 +26,24 @@
   align-items: center;
   gap: 100px;
 }
-.description-container-head-dep{
+.description-container-head-dep {
   display: flex;
   flex-direction: column;
 }
-.image-container-head-dep{
+.image-container-head-dep {
   /* position: relative;
   overflow: hidden; */
   height: 40vh;
   width: 30vw;
 }
-.description-container-head-dep{
+.description-container-head-dep {
   width: 30vw;
   line-height: 30px;
 }
-.head-dep-name{
+.head-dep-name {
   font-weight: 300;
 }
-.image-head-dep{
+.image-head-dep {
   height: 40vh;
   width: 30vw;
 }

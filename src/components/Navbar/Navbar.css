@@ -99,6 +99,11 @@
   display: block;
 }
 
+.handle-button-in-n-out{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .dropbtn {
   border-radius: 4px;
   border: none;

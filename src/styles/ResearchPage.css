@@ -1,0 +1,72 @@
+.cards-fetching-research-section {
+  display: grid;
+  width: 25vw;
+  grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+  grid-gap: 2rem;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding: 50px;
+}
+.Research-Page-Container{
+    display: flex;
+    flex-direction: row;
+}
+
+.row-two-container-research-research-page {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.row-two-container-research-research-page > h1 {
+  width: 350px;
+  color: #eeaf16;
+  cursor: pointer;
+  font-weight: 600;
+  margin: auto;
+  font-family: "calistogaregular";
+}
+.row-two-container-research-research-page > p {
+  width: 350px;
+  line-height: 25px;
+}
+.row-two-container-research-research-page > h1:hover {
+  width: 350px;
+  color: #0b2239;
+  font-weight: 600;
+}
+
+
+.research-page-hero-section{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px;
+    width: 73vw;
+    align-items: flex-start;
+
+    
+}
+
+
+.research-page-hero-image{
+    width: 65vw;
+
+}
+.div-research-page-hero-image{
+    height: 60vh;
+    width: 65vw;
+    overflow: hidden;
+}
+
+.RESEARCH-title-page{
+  margin-right: auto;
+  padding-bottom: 20px;
+  padding-right: 15px;
+  border-bottom: 7px solid #EEAF16;
+}
+
+.paragraph-research-page-hero{
+    line-height: 30px;
+    font-weight: 500;
+    width: 50vw;
+}
