@@ -51,12 +51,10 @@
 .form-query {
   display: flex;
   flex-direction: column;
-}
-
-form {
   display: flex;
   gap: 30px;
 }
+
 
 .contact_form_con {
   background-color: white;

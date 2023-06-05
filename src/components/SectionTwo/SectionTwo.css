@@ -17,8 +17,8 @@
   position: relative;
   overflow: hidden;
   color: whitesmoke;
-  border-bottom: 3px solid  rgba(11, 34, 57, 1);
-  border-left: 3px solid    rgba(11, 34, 57, 1);
+  /* border-bottom: 8px solid  rgba(11, 34, 57, 1); */
+  /* border-left: 8px solid    rgba(11, 34, 57, 1); */
   border-radius: 8px;
 }
 .about--section-two-card-image {
@@ -79,6 +79,7 @@
 .overlay-text h2 {
   font-weight: 400;
   margin-top: 0;
+  width: 360px;
 }
 .overlay-text p {
   display: flex;

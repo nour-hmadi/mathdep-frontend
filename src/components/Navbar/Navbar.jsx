@@ -63,7 +63,9 @@ function Navbar() {
 
         <NavLink to={`/academics/teachingstaff`} style={navigationStyle}>
           <p className="home">Teaching Staff</p>
-        </NavLink>
+        </NavLink> 
+        
+      
 
         {/* <NavLink to={`/research`} style={navigationStyle}>
           <p className="home">Research</p>
@@ -80,6 +82,11 @@ function Navbar() {
         {isAdmin ? (
           <NavLink to={`/pendingposts`} style={navigationStyle}>
             <p className="home">PendingPosts</p>
+          </NavLink>
+        ) : null}
+        {isAdmin ? (
+          <NavLink to={`/registerusers`} style={navigationStyle}>
+            <p className="home">Register</p>
           </NavLink>
         ) : null}
         {isAdmin ? (

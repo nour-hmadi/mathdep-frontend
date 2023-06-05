@@ -22,6 +22,7 @@ import Scroll from './components/ScrolltoTop/Scroll.jsx'
 import ResearchPage from "./pages/ResearchPage";
 import NewsnEvents from "./pages/NewsnEvents";
 import PendingPosts from "./pages/PendingPosts";
+import Register from "./pages/Auth/Register";
 
 function App() {
   return (
@@ -38,12 +39,13 @@ function App() {
           <Route exact path="/mathcommunity" element={<MathCommunity />} />
           <Route exact path="/contactus" element={<ContactUs />} />
           <Route exact path="/calendar" element={<Calendar />} />
-          <Route path="/research/:id" element={<ResearchId />} />
-          <Route path="/login" element={<Auth />} />
-          <Route path="/researchs" element={<ResearchPage />} />
-          <Route path="/news&events" element={<NewsnEvents />} />
-          <Route path="/pendingposts" element={<PendingPosts />} />
-          
+          <Route exact path="/research/:id" element={<ResearchId />} />
+          <Route exact path="/login" element={<Auth />} />
+          <Route exact path="/researchs" element={<ResearchPage />} />
+          <Route exact path="/news&events" element={<NewsnEvents />} />
+          <Route exact path="/pendingposts" element={<PendingPosts />} />
+          <Route exact path="/registerusers" element={<Register />} />
+
 
 
 
