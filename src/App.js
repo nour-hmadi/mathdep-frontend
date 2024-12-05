@@ -1,5 +1,5 @@
 //npm install react-dom react-router-dom
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 //routes components
 import Home from './pages/Home'
 import AboutUs from "./pages/AboutUs";
@@ -23,10 +23,12 @@ import ResearchPage from "./pages/ResearchPage";
 import NewsnEvents from "./pages/NewsnEvents";
 import PendingPosts from "./pages/PendingPosts";
 import Register from "./pages/Auth/Register";
+import Dashboard from "./Dashboard/Pages/Dashboard.jsx";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <div className="app">
       <Navbar />
         <Routes>
@@ -45,6 +47,9 @@ function App() {
           <Route exact path="/news&events" element={<NewsnEvents />} />
           <Route exact path="/pendingposts" element={<PendingPosts />} />
           <Route exact path="/registerusers" element={<Register />} />
+          <Route exact path="/admin-dashboard" element={<PrivateRoute>   <Dashboard /> </PrivateRoute>
+          } />
+
 
 
 
@@ -55,7 +60,7 @@ function App() {
         
       </div>
     
-    </BrowserRouter>
+    </Router>
   );
 }
 

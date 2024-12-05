@@ -14,24 +14,28 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Component, useState, useEffect } from "react";
-import "react-toastify/dist/ReactToastify.css";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+// import InputLabel from "@mui/material/InputLabel";
+// import FormControl from "@mui/material/FormControl";
 import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
 
 const theme = createTheme();
 // import { useHistory } from "react-router-dom";
-//omar
 
 function Register() {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [name, setName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
   const [file_number, setFileNumber] = useState("");
   const [error, setError] = useState(null);
-  const [type, setType] = useState("");
+  const [isTeacher, setIsTeacher] = useState(0); // default to Student
   const [image, setImage] = useState("");
   const [fileNumberError, setFileNumberError] = useState(null);
   const [isFileNumberValid, setIsFileNumberValid] = useState(true); // To track if file number is valid
@@ -71,16 +75,27 @@ function Register() {
   ///handle submit function
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log({
+      first_name,
+      last_name,
+      email,
+      password,
+      confirmPassword,
+      file_number,
+      phone_number,
+      isTeacher,
+    });
     setError(null);
 
     //////////
     if (
-      !name ||
+      !first_name ||
+      !last_name ||
       !email ||
       !password ||
       !file_number ||
       !phone_number ||
-      !type ||
+      !isTeacher ||
       !confirmPassword
     ) {
       toast.error("All fields are required!", { autoClose: 3000 });
@@ -115,12 +130,13 @@ function Register() {
     const formData = new FormData();
 
     // Append form data to FormData object
-    formData.append("name", name);
+    formData.append("first_name", first_name);
+    formData.append("last_name", last_name);
     formData.append("email", email);
     formData.append("password", password);
     formData.append("file_number", file_number);
     formData.append("phone_number", phone_number);
-    formData.append("type", type);
+    formData.append("isTeacher", isTeacher);
 
     // Append the image file to the FormData object
     if (image) {
@@ -207,12 +223,23 @@ function Register() {
                     margin="normal"
                     required
                     fullWidth
-                    name="name"
-                    label="Name"
-                    type="name"
-                    id="name"
+                    name="first_name"
+                    label="First Name"
+                    type="first_name"
+                    id="first_name"
                     autoComplete="current-name"
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />{" "}
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="last_name"
+                    label="Last Name"
+                    type="last_name"
+                    id="last_name"
+                    autoComplete="current-name"
+                    onChange={(e) => setLastName(e.target.value)}
                   />{" "}
                   <TextField
                     margin="normal"
@@ -288,7 +315,7 @@ function Register() {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
-                <TextField
+                {/* <TextField
                   margin="normal"
                   required
                   fullWidth
@@ -297,8 +324,18 @@ function Register() {
                   type="type"
                   id="type"
                   autoComplete="current-type"
-                  onChange={(e) => setType(e.target.value)}
-                />{" "}
+                  onChange={(e) => setIsTeacher(e.target.value)}
+                />{" "} */}
+                <Select
+                  labelId="isTeacher"
+                  id="isTeacher"
+                  value={isTeacher}
+                  onChange={(e) => setIsTeacher(e.target.value)}
+                  label="Teacher or Student"
+                >
+                  <MenuItem value={1}>Teacher</MenuItem>
+                  <MenuItem value={0}>Student</MenuItem>
+                </Select>
                 <TextField
                   margin="normal"
                   required

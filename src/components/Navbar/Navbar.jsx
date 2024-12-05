@@ -14,30 +14,48 @@ const navigationStyle = ({ isActive }) => ({
   textDecoration: "none",
 });
 
-const logOut = () => {
-  window.sessionStorage.clear();
-  window.location.reload(true);
-};
-
 function Navbar() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const navRef = useRef();
+  const navigate = useNavigate(); 
+
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
+
   useEffect(() => {
     if (sessionStorage.getItem("token")) {
       setIsLoggedin(true);
-      console.log(sessionStorage.getItem("token"));
+    } else {
+      setIsLoggedin(false);
     }
   }, []);
+  
   useEffect(() => {
     if (sessionStorage.getItem("isAdmin") === "true") {
       setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
     }
   }, []);
 
+   // Handle logout functionality
+   const handleLogout = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("isAdmin");
+  
+    localStorage.removeItem("userData");
+    localStorage.removeItem("authToken");
+  
+    // Update state immediately after logout
+    setIsLoggedin(false);
+    setIsAdmin(false);
+  
+    // Redirect to home page after logout
+    navigate("/");
+   
+  };
   
   return (
     <div className="navbar-container">
@@ -45,8 +63,13 @@ function Navbar() {
         <DepartmentLogo />
       </div>
       <div ref={navRef} className="navbar">
+        {isAdmin ? (
+          <NavLink to={`/admin-dashboard`} style={navigationStyle}>
+            <p className="home">Dashboard</p>
+          </NavLink>
+        ) : null}
         <NavLink to={`/`} style={navigationStyle}>
-          <p className="home">Home</p>
+          <p className="homepage">Home Page</p>
         </NavLink>
 
         <NavLink to={`/aboutus`} style={navigationStyle}>
@@ -60,45 +83,34 @@ function Navbar() {
         <NavLink to={`/academics`} style={navigationStyle}>
           <p className="home">Academics </p>{" "}
         </NavLink>
+        <NavLink to={`/admissions`} style={navigationStyle}>
+          <p className="home">Admissions </p>{" "}
+        </NavLink>
 
-        <NavLink to={`/academics/teachingstaff`} style={navigationStyle}>
+        {/* <NavLink to={`/academics/teachingstaff`} style={navigationStyle}>
           <p className="home">Teaching Staff</p>
-        </NavLink> 
-        
-      
+        </NavLink>  */}
 
         {/* <NavLink to={`/research`} style={navigationStyle}>
           <p className="home">Research</p>
         </NavLink> */}
 
-        {/* <NavLink to={`/research`} style={navigationStyle}>
+        <NavLink to={`/resources`} style={navigationStyle}>
           <p className="home">Resources</p>
-        </NavLink> */}
-
-        <NavLink to={`/mathcommunity`} style={navigationStyle}>
-          <p className="home">Math Community</p>
         </NavLink>
 
-        {isAdmin ? (
-          <NavLink to={`/pendingposts`} style={navigationStyle}>
-            <p className="home">PendingPosts</p>
-          </NavLink>
-        ) : null}
-        {isAdmin ? (
-          <NavLink to={`/registerusers`} style={navigationStyle}>
-            <p className="home">Register</p>
-          </NavLink>
-        ) : null}
-        {isAdmin ? (
-          <NavLink to={`/students`} style={navigationStyle}>
-            <p className="home">Students</p>
-          </NavLink>
-        ) : null}
+        <NavLink to={`/research`} style={navigationStyle}>
+          <p className="home">Research</p>
+        </NavLink>
+
+        <NavLink to={`/outreach`} style={navigationStyle}>
+          <p className="home">Outreach</p>
+        </NavLink>
 
         <div className="dropdown">
           {isLoggedin ? (
             <NavLink to={`/`}>
-              <button className="dropbtn" onClick={logOut}>
+              <button className="dropbtn" onClick={handleLogout}>
                 <span>
                   <AiOutlineUser />
                   logout

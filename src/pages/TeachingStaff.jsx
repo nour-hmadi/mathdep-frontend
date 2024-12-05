@@ -6,7 +6,8 @@ import { useState, useEffect } from "react";
 import Loader from "../components/Loader/Loader";
 import PageLinks from "../components/PageLinks/PageLinks";
 import ResearchId from "../components/ResearchId/ResearchId";
-const url = "https://mathdep.onrender.com/api/user/";
+// const url = "https://mathdep.onrender.com/api/user/";
+ const url = "http://localhost:5000/api/user/";
 
 
 
@@ -24,28 +25,32 @@ export const TeachingStaff = () => {
         setIsLoading(false); 
       })
       .catch((err) => {
-      // console.log(err);
+      console.log(err);
       setIsLoading(false)}); 
   }, []);
 
   return (
     <div className="teaching-staff-page">
-   
-      
       <PageLinks />
-      <div className="column-two-teaching-staff-page">
-      <div className='about--section-two-card-container'>
-      {/* <img src={card} alt="image" className='about--section-two-card-image'/> */}
-      <div className="overlay-text">
-        <h2>teacher name</h2>
-        <p>teacher position</p>
-      </div>
-    </div>
 
-
-        
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="column-two-teaching-staff-page">
+          {teacherCards.length > 0 ? (
+            teacherCards.map((teacher, index) => (
+              <TeacherCard
+                key={index}
+                name={teacher.name}
+                position={teacher.position}
+                image={teacher.image} 
+              />
+            ))
+          ) : (
+            <p>No teaching staff data available.</p>
+          )}
+        </div>
+      )}
     </div>
-    
   );
 };
