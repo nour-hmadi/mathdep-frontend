@@ -2,7 +2,7 @@ import React from "react";
 import "./auth.css";
 
 import { useNavigate } from "react-router-dom";
-//omar
+
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -45,7 +45,7 @@ function Auth() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost/api/user/register", {
+      const response = await fetch("http://localhost:5000/api/user/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, address, phonenumber }),
@@ -79,7 +79,8 @@ function Auth() {
       return;
     }
     try {
-      const response = await fetch("https://mathdep.onrender.com/api/user/login", {
+      //      const response = await fetch("https://mathdep.onrender.com/api/user/login", {
+      const response = await fetch("http://localhost:5000/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -94,9 +95,13 @@ function Auth() {
       sessionStorage.setItem("id", data._id);
       sessionStorage.setItem("isAdmin", data.isAdmin);
       sessionStorage.setItem("name", data.name);
+      // toast.success("Logged in", { autoClose: 2000 });
+      // // if (data.role === "User") {
+      // window.location.href = "/";
       toast.success("Logged in", { autoClose: 2000 });
-      // if (data.role === "User") {
-      window.location.href = "/";
+      setTimeout(() => {
+          window.location.href = "/";
+      }, 2000);
      // window.location.href = `${data._id}`;
       // }
       console.log("Login successful");

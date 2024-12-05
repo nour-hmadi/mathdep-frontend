@@ -2,7 +2,6 @@ import React from "react";
 import "./auth.css";
 
 import { useNavigate } from "react-router-dom";
-//omar
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -24,44 +23,145 @@ const theme = createTheme();
 //omar
 
 function Register() {
-
-  
-
- 
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
-  const [phonenumber, setPhoneNumber] = useState("");
-  const [filenumber, setFileNumber] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [file_number, setFileNumber] = useState("");
   const [error, setError] = useState(null);
   const [type, setType] = useState("");
   const [image, setImage] = useState("");
+  const [fileNumberError, setFileNumberError] = useState(null);
+  const [isFileNumberValid, setIsFileNumberValid] = useState(true); // To track if file number is valid
 
+  const checkFileNumberExistence = async (file_number) => {
+    if (!file_number) return;
+    setFileNumberError(null);
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/user/check-file-number`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ file_number }),
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.exists) {
+          setIsFileNumberValid(false);
+          setFileNumberError("File number already exists");
+        } else {
+          setIsFileNumberValid(true);
+          setFileNumberError(null);
+        }
+      } else {
+        throw new Error("Error checking file number");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setIsFileNumberValid(false);
+      setFileNumberError("Failed to check file number");
+    }
+  };
+  ///handle submit function
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError(null);
-  
-    try {
-      const response = await fetch("http://localhost/api/user/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password, filenumber, phonenumber, type, image }),
+
+    //////////
+    if (
+      !name ||
+      !email ||
+      !password ||
+      !file_number ||
+      !phone_number ||
+      !type ||
+      !confirmPassword
+    ) {
+      toast.error("All fields are required!", { autoClose: 3000 });
+      return;
+    }
+
+    // Validate email format (basic validation)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address!", { autoClose: 3000 });
+      return;
+    }
+
+    // Validate password length
+    if (password.length < 8) {
+      toast.error("Password must be at least 8 characters long!", {
+        autoClose: 3000,
       });
-  
+      return;
+    }
+
+    // Validate that password and confirmPassword match
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match!", { autoClose: 3000 });
+      return;
+    }
+    //////////
+
+    ///
+
+    // Create a new FormData object
+    const formData = new FormData();
+
+    // Append form data to FormData object
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("file_number", file_number);
+    formData.append("phone_number", phone_number);
+    formData.append("type", type);
+
+    // Append the image file to the FormData object
+    if (image) {
+      formData.append("image", image); // 'image' is the field name in the backend
+    }
+    ////////
+    try {
+      const response = await fetch("http://localhost:5000/api/user/register", {
+        method: "POST",
+        // headers: { "Content-Type": "application/json" },
+        // body: JSON.stringify({
+        //   name,
+        //   email,
+        //   password,
+        //   filenumber,
+        //   phonenumber,
+        //   type,
+        //   image,
+        // }),
+        body: formData, //send the FormData object as the request body
+      });
+
       if (!response.ok) {
         const data = await response.json();
         throw new Error(data.error);
       }
-  
+
       const data = await response.json();
       console.log("Registration successful");
-  
+      toast.success("Registration done successfully", { autoClose: 2000 });
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
       // Do any additional actions after successful registration
       // For example, you can redirect to a different page
       // or perform any other logic specific to the super admin.
     } catch (error) {
       setError(error.message);
+      toast.error("An error occurred. Please try again later.", {
+        autoClose: 2000,
+      });
       console.error(error);
     }
   };
@@ -103,8 +203,7 @@ function Register() {
                 sx={{ mt: 1 }}
               >
                 <div className="register-row">
-                 
-                <TextField
+                  <TextField
                     margin="normal"
                     required
                     fullWidth
@@ -114,40 +213,59 @@ function Register() {
                     id="name"
                     autoComplete="current-name"
                     onChange={(e) => setName(e.target.value)}
-                  />    <TextField
+                  />{" "}
+                  <TextField
                     margin="normal"
                     required
                     fullWidth
-                    name="filenumber"
+                    name="file_number"
                     label="File Number"
                     type="number"
-                    id="filenumber"
+                    id="file_number"
                     autoComplete="current-filenumber"
-                    onChange={(e) => setFileNumber(e.target.value)}
-                  />    <TextField
+                    onChange={(e) => {
+                      setFileNumber(e.target.value);
+                      checkFileNumberExistence(e.target.value); // Check if file number exists
+                    }}
+                    error={!isFileNumberValid} // Show error if file number is invalid
+                    //helperText={fileNumberError} // Display error message
+                  />
+                  {/* Error message if file number already exists */}
+                  {fileNumberError && (
+                    <Typography
+                      variant="body2"
+                      color="error"
+                      sx={{ fontWeight: "bold", marginTop: 1 }}
+                    >
+                      {fileNumberError} {/* Display the error message */}
+                    </Typography>
+                  )}
+                  <TextField
                     margin="normal"
                     required
                     fullWidth
-                    name="phonenumber"
+                    name="phone_number"
                     label="Phone Number"
                     type="number"
-                    id="phonenumber"
+                    id="phone_number"
                     autoComplete="current-phonenumber"
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                  />   
+                  />
                 </div>
                 <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    autoFocus
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <div className="register-row"> <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <div className="register-row">
+                  {" "}
+                  <TextField
                     margin="normal"
                     required
                     fullWidth
@@ -158,17 +276,18 @@ function Register() {
                     autoComplete="current-password"
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Confirm Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  onChange={(e) => setPassword(e.target.value)}
-                /></div>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="confirmPassword"
+                    label="confirm Password"
+                    type="password"
+                    id="confirmPassword"
+                    autoComplete="off"
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </div>
                 <TextField
                   margin="normal"
                   required
@@ -185,21 +304,19 @@ function Register() {
                   required
                   fullWidth
                   name="Profile Pictrue"
-                  label="Password"
+                  label="Profile Picture"
                   type="file"
                   id="image"
-                  autoComplete=""
-                  onChange={(e) => setImage(e.target.value)}
+                  autoComplete="off"
+                  onChange={(e) => setImage(e.target.files[0])}
                 />
-          
-            
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                   Register User
+                  Register User
                 </Button>
               </Box>
             </Box>
