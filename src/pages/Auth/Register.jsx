@@ -35,7 +35,7 @@ function Register() {
   const [phone_number, setPhoneNumber] = useState("");
   const [file_number, setFileNumber] = useState("");
   const [error, setError] = useState(null);
-  const [isTeacher, setIsTeacher] = useState(0); // default to Student
+  const [isTeacher, setIsTeacher] = useState(true); // default to Student
   const [image, setImage] = useState("");
   const [fileNumberError, setFileNumberError] = useState(null);
   const [isFileNumberValid, setIsFileNumberValid] = useState(true); // To track if file number is valid
@@ -95,7 +95,6 @@ function Register() {
       !password ||
       !file_number ||
       !phone_number ||
-      !isTeacher ||
       !confirmPassword
     ) {
       toast.error("All fields are required!", { autoClose: 3000 });
@@ -333,8 +332,8 @@ function Register() {
                   onChange={(e) => setIsTeacher(e.target.value)}
                   label="Teacher or Student"
                 >
-                  <MenuItem value={1}>Teacher</MenuItem>
-                  <MenuItem value={0}>Student</MenuItem>
+                  <MenuItem value={true}>Teacher</MenuItem>
+                  <MenuItem value={false}>Student</MenuItem>
                 </Select>
                 <TextField
                   margin="normal"
