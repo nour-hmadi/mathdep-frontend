@@ -35,7 +35,7 @@ const UserTable = () => {
   const [openConfirmDelete, setOpenConfirmDelete] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
   const [openConfirmEdit, setOpenConfirmEdit] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+
 
   // Fetch users from the backend
   useEffect(() => {
@@ -68,25 +68,14 @@ const UserTable = () => {
 
   // Filter users based on the selected filter
   useEffect(() => {
-    let filtered = users;
-  
-    // Apply filter based on user type (all, students, teachers)
-    if (filter === "students") {
-      filtered = users.filter((user) => !user.isTeacher);
+    if (filter === "all") {
+      setFilteredUsers(users);
+    } else if (filter === "students") {
+      setFilteredUsers(users.filter((user) => !user.isTeacher));
     } else if (filter === "teachers") {
-      filtered = users.filter((user) => user.isTeacher);
+      setFilteredUsers(users.filter((user) => user.isTeacher));
     }
-  
-    // Apply search term filter for file_number
-    if (searchTerm) {
-      filtered = filtered.filter((user) =>
-        user.file_number.toString().includes(searchTerm)
-      );
-    }
-  
-    setFilteredUsers(filtered);
-  }, [filter, users, searchTerm]);
-  
+  }, [filter, users]);
 
   // Handle start editing user
   const handleEdit = (user) => {
@@ -127,38 +116,25 @@ const UserTable = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // After successful edit, fetch the users again
-        const fetchUsers = async () => {
-          try {
-            const response = await fetch("http://localhost:5000/api/user");
-            if (!response.ok) {
-              throw new Error(
-                `Failed to fetch users, HTTP error! Status: ${response.status}`
-              );
-            }
-            const data = await response.json();
-            if (data.data && Array.isArray(data.data)) {
-              const filteredData = data.data.filter((user) => !user.isAdmin);
-              setUsers(filteredData);
-              setFilteredUsers(filteredData);
-            } else {
-              throw new Error("Invalid data format received");
-            }
-          } catch (error) {
-            console.error("Error fetching users:", error);
-            setUsers([]);
-            setFilteredUsers([]);
-          }
-        };
+        const updatedUser = data;
 
-        // Call fetchUsers to refresh the entire data
-        fetchUsers();
+        // Update user list in state
+     // Update only the edited row in state
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user._id === updatedUser._id ? updatedUser : user
+        )
+      );
+      setFilteredUsers((prevFilteredUsers) =>
+        prevFilteredUsers.map((user) =>
+          user._id === updatedUser._id ? updatedUser : user
+        )
+      );
 
-        // Reset edit mode
-        setIsEdited(null);
-        setEditedUser({});
-        toast.success("User updated successfully!");
-        setOpenConfirmEdit(false); // Close the confirmation dialog
+      // Reset edit mode
+      setIsEdited(null);
+      setEditedUser({});
+      toast.success("User updated successfully!");
       } else {
         throw new Error(data.message || "Update failed");
       }
@@ -166,6 +142,7 @@ const UserTable = () => {
       toast.error("Error updating user");
       console.error("Error updating user:", error);
     }
+    setOpenConfirmDelete(false); // Close the confirmation dialog
   };
 
   // Handle cancel editing
@@ -200,10 +177,6 @@ const UserTable = () => {
     }
     setOpenConfirmDelete(false);
   };
-  const handleSort = () => {
-    const sortedUsers = [...filteredUsers].sort((a, b) => a.file_number - b.file_number); // Ascending order
-    setFilteredUsers(sortedUsers);
-  };
 
   return (
     <div className="user-table-container">
@@ -221,17 +194,6 @@ const UserTable = () => {
           <MenuItem value="teachers">Teachers</MenuItem>
         </Select>
       </FormControl>
-      <FormControl sx={{ minWidth: 200, marginBottom: 2 }}>
-        <TextField
-          label="Search by File Number"
-          variant="outlined"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </FormControl>
-      <Button onClick={handleSort} variant="contained" color="primary">
-        Sort by File Number
-      </Button>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -371,8 +333,8 @@ const UserTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      {/* Edit Confirmation Dialog */}
-      <Dialog open={openConfirmEdit} onClose={() => setOpenConfirmEdit(false)}>
+        {/* Edit Confirmation Dialog */}
+        <Dialog open={openConfirmEdit} onClose={() => setOpenConfirmEdit(false)}>
         <DialogTitle>Confirm Edit Submission</DialogTitle>
         <DialogContent>
           Are you sure you want to save the changes?

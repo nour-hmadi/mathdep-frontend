@@ -44,7 +44,7 @@ function Navbar() {
    const handleLogout = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("isAdmin");
-  
+    sessionStorage.removeItem("userImage");
     localStorage.removeItem("userData");
     localStorage.removeItem("authToken");
   
@@ -57,6 +57,9 @@ function Navbar() {
    
   };
   
+  const userImage = sessionStorage.getItem("userImage");
+  const userFirstName = sessionStorage.getItem("first_name");
+
   return (
     <div className="navbar-container">
       <div className="logo-oart-of-the-navbar">
@@ -111,9 +114,24 @@ function Navbar() {
           {isLoggedin ? (
             <NavLink to={`/`}>
               <button className="dropbtn" onClick={handleLogout}>
+                
                 <span>
+                {userImage ? (
+                  <div>
+                  <img
+                    src={userImage}
+                  
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      borderRadius: "50%",
+                      // objectFit: "cover",
+                    }}
+                  />
+                 {userFirstName}
+                 </div>) : (
                   <AiOutlineUser />
-                  logout
+                )}
                 </span>
               </button>
             </NavLink>

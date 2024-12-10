@@ -24,20 +24,10 @@ const theme = createTheme();
 //omar
 
 function Auth() {
-  const [zih, setZih] = useState(false);
-
-  function activateZih() {
-    setZih(true);
-  }
-
-  function deactivateZih() {
-    setZih(false);
-  }
+  
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("");
-  const [phonenumber, setPhoneNumber] = useState("");
   const [error, setError] = useState(null);
 
   //   login
@@ -56,7 +46,7 @@ function Auth() {
         body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
-      console.log(data);
+      console.log("server response",data.image);
       if (!response.ok) {
         throw new Error(data.message);
         toast.error("Invalid email or password", { autoClose: 2000 });
@@ -65,6 +55,8 @@ function Auth() {
       sessionStorage.setItem("id", data._id);
       sessionStorage.setItem("isAdmin", data.isAdmin);
       sessionStorage.setItem("first_name", data.first_name);
+      console.log("user image url:", data.image);
+      sessionStorage.setItem('userImage', data.image);
       // toast.success("Logged in", { autoClose: 2000 });
       // // if (data.role === "User") {
       // window.location.href = "/";
