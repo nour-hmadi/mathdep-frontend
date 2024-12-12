@@ -25,9 +25,9 @@ function DepartmentLogo() {
        <img src={logo} alt="mathdep logo" className="navbar-logo" />
      
        <h1 className="navbar-title">
-        <span>Math</span>ematics
+        <span>Mathematics</span>
         <br />
-        <span>Dep</span>artment
+        Department
       </h1>
       {isLoggedin ? (
         <div>

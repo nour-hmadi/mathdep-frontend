@@ -1,5 +1,4 @@
 .footer {
-  /* background-color: rgba(49, 98, 164, 0.25); */
   height: 28rem;
   display: flex;
   flex-direction: column;
@@ -7,7 +6,7 @@
   justify-content: center;
   gap: 90px;
   padding-bottom: 15px;
-  background-color: #0b2239;
+  background-color: #162d3f;
   color: white;
 }
 .footer-row-one {
