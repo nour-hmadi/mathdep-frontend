@@ -6,28 +6,25 @@ import { TeacherCard } from "../components/TeacherCard/TeacherCard";
 import { useState, useEffect } from "react";
 import Loader from "../components/Loader/Loader";
 import PageLinks from "../components/PageLinks/PageLinks";
-import ResearchId from "../components/ResearchId/ResearchId";
-// const url = "https://mathdep.onrender.com/api/user/";
- const url = `${API_URL}/api/user/`;
 
-
+const url = `${API_URL}/api/user/teachers`;    // public fields only: name, title, description and photo
 
 export const TeachingStaff = () => {
   const [teacherCards, setTeacherCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true); 
+    setIsLoading(true);
     axios
-      .get(`${url}`)
+      .get(url)
       .then((res) => {
         setTeacherCards(res.data.data);
-        // console.log(res.data.data)
-        setIsLoading(false); 
+        setIsLoading(false);
       })
       .catch((err) => {
-      console.log(err);
-      setIsLoading(false)}); 
+        console.log(err);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
@@ -39,12 +36,13 @@ export const TeachingStaff = () => {
       ) : (
         <div className="column-two-teaching-staff-page">
           {teacherCards.length > 0 ? (
-            teacherCards.map((teacher, index) => (
+            teacherCards.map((teacher) => (
               <TeacherCard
-                key={index}
+                key={teacher._id}
                 name={teacher.name}
-                position={teacher.position}
-                image={teacher.image} 
+                title={teacher.title}
+                description={teacher.description}
+                image={teacher.image}
               />
             ))
           ) : (

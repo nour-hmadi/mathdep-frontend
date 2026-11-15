@@ -7,7 +7,7 @@ import axios from "axios";
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-const api_url = `${API_URL}/api/user/`;
+const api_url = `${API_URL}/api/user/teachers`;
 
 function SectionTwo() {
   const [info, setInfo] = useState([]);
@@ -44,8 +44,8 @@ function SectionTwo() {
   // numItems=3 //info=6
   //info.length = mapping over all the items in the about collection including the ones of section one and three
   const prevButtonDisabled = startIndex === 0;
-  const filteredCards = info.filter((object) => object.type === "teacher");
-  const nextButtonDisabled = startIndex + numItems === filteredCards.length;
+  const filteredCards = info;                                   // the API returns only teachers
+  const nextButtonDisabled = startIndex + numItems >= filteredCards.length;
   // console.log("start:" + startIndex);
   // console.log("filtered:" + filteredCards.length);
   // console.log("info:" + info.length);
@@ -57,9 +57,9 @@ function SectionTwo() {
       return (
         <CardSectionTwo
           title={object.name}
-          description={object.email}
-          key={object.id}
-          image={object.image.url}
+          description={object.title}
+          key={object._id}
+          image={object.image}
         />
       );
     });
@@ -113,7 +113,7 @@ function SectionTwo() {
           </Button>
         )}
       </div>
-     <NavLink to={`teachingstaff`}><button className="show-more-research-section-home-page">Show More</button></NavLink> 
+     <NavLink to="/academics/teachingstaff"><button className="show-more-research-section-home-page">Show More</button></NavLink> 
 
     </div>
   );
