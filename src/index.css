@@ -228,3 +228,67 @@ a.panel:hover {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* News items: used on the home page and the News and events page. */
+.news-list {
+  display: grid;
+  gap: 16px;
+}
+
+.news-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.news-item__date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  border-radius: 12px;
+  background: var(--navy);
+  color: #fff;
+}
+
+.news-item__date strong {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.news-item__date span {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.news-item h3 {
+  margin: 4px 0 6px;
+}
+
+.news-item p {
+  margin: 0 0 8px;
+}
+
+.news-item small {
+  color: var(--ink-soft);
+}
+
+
+.news-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.news-columns h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 860px) {
+  .news-columns {
+    grid-template-columns: 1fr;
+  }
+}

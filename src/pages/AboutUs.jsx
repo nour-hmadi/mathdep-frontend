@@ -1,13 +1,10 @@
 import React from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import "../styles/AboutUs.css";
-import one from "../assests/imageone.png";
-import two from "../assests/imagetwo.png";
-import three from "../assests/imagethree.png";
-import four from "../assests/imagefour.png";
-import five from "../assests/imagefive.png";
-import six from "../assests/imagesix.png";
-import seven from "../assests/imageseven.png";
+
+// The campus photos also fill the Gallery page: see public/images/gallery and the backend seed.
+const photo = (n) => `/images/gallery/campus-${n}.jpg`;
+const [one, two, three, four, five, six, seven] = [1, 2, 3, 4, 5, 6, 7].map(photo);
 
 function AboutUs() {
   return (

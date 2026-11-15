@@ -1,74 +1,62 @@
 import API_URL from "../config";
-
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PageHeader from "../components/PageHeader/PageHeader";
-import '../styles/NewsnEvents.css';
+import Loader from "../components/Loader/Loader";
 
 const url = `${API_URL}/api/announcements/`;
+const formatDate = (date) =>
+  new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 
-
-function NewsnEvents() {
-    const [info, setInfo] = useState([]);
-
-
-  useEffect(() => {
-    getAllInfo();
-  }, []);
-
-  const getAllInfo = async () => {
-    await axios
-      .get(`${url}`)
-      .then((response) => {
-        setInfo(response.data.data);
-      })
-      .catch((error) => console.error(`Error: ${error}`));
-  };
-
-  const anncards = info.map((object, index) => {
-    if (index%2 === 0) {
-return (
-    <div key={object._id} className='even-bordered-ann-container'>
-    <div className='date-ann-div'><h1>{object.day}</h1>
-    <p className='month-ann-n-events-date'>{object.month}</p></div>
-
-    <div className='definition-ann-div'>
-        <p className='events-n-news-title'>{object.title}</p>
-        <p className='events-n-news-description'>{object.description}</p>
-        <p className='events-n-news-createdAt-even'>{new Date(object.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</p>
-    </div>
-
-
-    </div>
-)}
-else if (index%2 === 1) {
-    return (
-        <div key={object._id} className='odd-bordered-ann-container'>
-        <div className='date-ann-div'>
-        <h1>{object.day}</h1>
-        <p className='month-ann-n-events-date'>{object.month}</p></div>
-
-        <div className='definition-ann-div'>
-            <p className='events-n-news-title'>{object.title}</p>
-            <p className='events-n-news-description'>{object.description}</p>
-            <p className='events-n-news-createdAt-odd'>{new Date(object.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</p>
-        </div>
-
-
-        </div>
-    )}
-
-});
-
+function NewsItem({ item }) {
   return (
-    <div>
-      <PageHeader title="News and events" lead="Announcements, open days, seminars and competitions." />
-      <div className='ann-n-events-hero-page-container'>
-       {anncards}
+    <article className="panel news-item">
+      <div className="news-item__date"><strong>{item.day}</strong><span>{item.month?.slice(0, 3)}</span></div>
+      <div>
+        <span className="tag">{item.type}</span>
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+        <small>Posted {formatDate(item.createdAt)}</small>
       </div>
-    </div>
-  )
+    </article>
+  );
 }
 
-export default NewsnEvents
+// Events (with a date to attend) and announcements (things to know), newest first.
+function NewsnEvents() {
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    axios.get(url)
+      .then((response) => setItems([...response.data.data].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))))
+      .catch((error) => console.error(error))
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  const events = items.filter((item) => item.type === "event");
+  const announcements = items.filter((item) => item.type !== "event");
+
+  return (
+    <>
+      <PageHeader title="News and events" crumbs={[{ name: "Community", path: "/mathcommunity" }]}
+                  lead="Open days, seminars and competitions to attend, and announcements from the secretariat." />
+      <div className="page">
+        {isLoading ? <Loader /> : items.length ? (
+          <div className="news-columns">
+            <section>
+              <h2>Upcoming events</h2>
+              <div className="news-list">{events.map((item) => <NewsItem key={item._id} item={item} />)}</div>
+            </section>
+            <section>
+              <h2>Announcements</h2>
+              <div className="news-list">{announcements.map((item) => <NewsItem key={item._id} item={item} />)}</div>
+            </section>
+          </div>
+        ) : <p className="empty">Nothing has been announced yet.</p>}
+      </div>
+    </>
+  );
+}
+
+export default NewsnEvents;
