@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import { useState, useEffect } from "react";
@@ -8,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import logo from "../../assests/wallpaper.jpg";
 import "./HeaderCarousel.css";
 
-const url = "https://mathdep.onrender.com/api/carousel/";
+const url = `${API_URL}/api/carousel/`;
 
 
 const HeaderCarousel = () => {

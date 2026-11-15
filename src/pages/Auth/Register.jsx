@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React from "react";
 import "./auth.css";
 
@@ -46,7 +47,7 @@ function Register() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/user/check-file-number`,
+        `${API_URL}/api/user/check-file-number`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -143,7 +144,7 @@ function Register() {
     }
     ////////
     try {
-      const response = await fetch("http://localhost:5000/api/user/register", {
+      const response = await fetch(`${API_URL}/api/user/register`, {
         method: "POST",
         // headers: { "Content-Type": "application/json" },
         // body: JSON.stringify({

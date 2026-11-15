@@ -1,3 +1,4 @@
+import API_URL from "../config";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,7 +42,7 @@ const UserTable = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/user");
+        const response = await fetch(`${API_URL}/api/user`);
         if (!response.ok) {
           throw new Error(
             `Failed to fetch users, HTTP error! Status: ${response.status}`
@@ -117,7 +118,7 @@ const UserTable = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/user/edit/${editedUser._id}`,
+        `${API_URL}/api/user/edit/${editedUser._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -130,7 +131,7 @@ const UserTable = () => {
         // After successful edit, fetch the users again
         const fetchUsers = async () => {
           try {
-            const response = await fetch("http://localhost:5000/api/user");
+            const response = await fetch(`${API_URL}/api/user`);
             if (!response.ok) {
               throw new Error(
                 `Failed to fetch users, HTTP error! Status: ${response.status}`
@@ -179,7 +180,7 @@ const UserTable = () => {
     if (userToDelete) {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/user/${userToDelete._id}`,
+          `${API_URL}/api/user/${userToDelete._id}`,
           {
             method: "DELETE",
           }

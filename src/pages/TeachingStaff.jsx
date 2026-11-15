@@ -1,3 +1,4 @@
+import API_URL from "../config";
 import React from "react";
 import '../styles/TeachingStaff.css'
 import axios from "axios";
@@ -7,7 +8,7 @@ import Loader from "../components/Loader/Loader";
 import PageLinks from "../components/PageLinks/PageLinks";
 import ResearchId from "../components/ResearchId/ResearchId";
 // const url = "https://mathdep.onrender.com/api/user/";
- const url = "http://localhost:5000/api/user/";
+ const url = `${API_URL}/api/user/`;
 
 
 

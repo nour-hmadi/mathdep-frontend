@@ -1,3 +1,4 @@
+import API_URL from "../config";
 import React from "react";
 import "../styles/MathCommunity.css";
 import { useState, useEffect } from "react";
@@ -5,10 +6,10 @@ import axios from "axios";
 import "../styles/PendingPosts.css";
 import avatar from "../assests/megaphone.png";
 
-const url = "https://mathdep.onrender.com/api/posts/";
+const url = `${API_URL}/api/posts/`;
 
 const Delete = async (id) => {
-  const response = await axios.delete(`https://mathdep.onrender.com/api/posts/${id}`);
+  const response = await axios.delete(`${API_URL}/api/posts/${id}`);
   console.log(response);
 };
 

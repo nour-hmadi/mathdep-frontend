@@ -1,3 +1,4 @@
+import API_URL from "../config";
 import React from "react";
 import avatar from "../assests/imagetwo.png";
 import "../styles/MathCommunity.css";
@@ -5,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { AiOutlineComment } from "react-icons/ai";
 
-const url = "https://mathdep.onrender.com/api/posts/";
+const url = `${API_URL}/api/posts/`;
 
 function MathCommunity() {
   const [info, setInfo] = useState([]);
@@ -44,7 +45,7 @@ function MathCommunity() {
   const addComment = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post("http://localhost:5000/api/comments/", {
+      const response = await axios.post(`${API_URL}/api/comments/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

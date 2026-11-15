@@ -1,3 +1,4 @@
+import API_URL from "../config";
 
 import React from 'react';
 
@@ -6,7 +7,7 @@ import axios from "axios";
 
 import { NavLink } from "react-router-dom";
 
-const url = "http://localhost:5000/api/announcements/";
+const url = `${API_URL}/api/announcements/`;
 
 
 function UsersTable() {

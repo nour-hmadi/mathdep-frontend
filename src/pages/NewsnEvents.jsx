@@ -1,3 +1,4 @@
+import API_URL from "../config";
 
 import React from 'react';
 import '../styles/NewsnEvents.css';
@@ -9,7 +10,7 @@ import loudspeakericontwo from "../assests/microphone.png";
 import { BsCalendar4Event } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 
-const url = "https://mathdep.onrender.com/api/announcements/";
+const url = `${API_URL}/api/announcements/`;
 
 
 function NewsnEvents() {

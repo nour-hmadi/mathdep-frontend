@@ -1,3 +1,4 @@
+import API_URL from "../config";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -40,7 +41,7 @@ const AdminsTable = () => {
   useEffect(() => {
     const fetchAdmins = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/user");
+        const response = await fetch(`${API_URL}/api/user`);
         if (!response.ok) throw new Error("Failed to fetch admins");
         const data = await response.json();
 
@@ -67,7 +68,7 @@ const AdminsTable = () => {
     if (adminToDelete) {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/user/${adminToDelete._id}`,
+          `${API_URL}/api/user/${adminToDelete._id}`,
           {
             method: "DELETE",
           }
@@ -131,7 +132,7 @@ const AdminsTable = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/user/${editAdmin._id}`,
+        `${API_URL}/api/user/${editAdmin._id}`,
         {
           method: "PUT",
           body: formData,

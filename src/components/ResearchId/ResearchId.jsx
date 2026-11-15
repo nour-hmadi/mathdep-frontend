@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React from "react";
 import "./ResearchId.css";
 import { useState, useEffect } from "react";
@@ -18,7 +19,7 @@ function ResearchId() {
       setIsLoading(true);
       try {
         const response = await axios.get(
-          `https://mathdep.onrender.com/api/research/${researchId.id}`
+          `${API_URL}/api/research/${researchId.id}`
         );
         setInfo(response.data.data);
         setImge(response.data.data.image.url)

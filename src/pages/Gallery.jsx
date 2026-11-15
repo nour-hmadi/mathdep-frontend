@@ -1,10 +1,11 @@
+import API_URL from "../config";
 import React from "react";
 import '../styles/Gallery.css'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/Loader/Loader";
 
-const url = "https://mathdep.onrender.com/api/gallery/";
+const url = `${API_URL}/api/gallery/`;
 
 function Gallery() {
   const [info, setInfo] = useState([]);

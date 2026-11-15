@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React from "react";
 import CardSectionTwo from "./CardSectionTwo";
 import "./SectionTwo.css";
@@ -6,7 +7,7 @@ import axios from "axios";
 import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-const api_url = "https://mathdep.onrender.com/api/user/";
+const api_url = `${API_URL}/api/user/`;
 
 function SectionTwo() {
   const [info, setInfo] = useState([]);

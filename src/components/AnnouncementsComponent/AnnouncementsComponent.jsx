@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -8,7 +9,7 @@ import axios from "axios";
 import loudspeakericontwo from "../../assests/microphone.png";
 import { BsCalendar4Event } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
-const url = "https://mathdep.onrender.com/api/announcements/";
+const url = `${API_URL}/api/announcements/`;
 
 function CalendarComponent() {
   const [info, setInfo] = useState([]);

@@ -1,10 +1,11 @@
+import API_URL from "../../config";
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import "./SectionOne.css";
 
-const url = "https://mathdep.onrender.com/api/headdepartment/";
+const url = `${API_URL}/api/headdepartment/`;
 
 function HeadDepartment() {
   const [info, setInfo] = useState([]);

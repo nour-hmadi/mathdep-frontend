@@ -1,3 +1,4 @@
+import API_URL from "../config";
 import React from "react";
 import "../styles/ResearchPage.css";
 import { useState, useEffect } from "react";
@@ -5,7 +6,7 @@ import axios from "axios";
 import Loader from "../components/Loader/Loader";
 import { NavLink } from "react-router-dom";
 import board from "../assests/unsplash.jpg";
-const url = "https://mathdep.onrender.com/api/research/";
+const url = `${API_URL}/api/research/`;
 
 function ResearchPage() {
   const [info, setInfo] = useState([]);

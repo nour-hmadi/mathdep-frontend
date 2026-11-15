@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -5,7 +6,7 @@ import "./ResearchComponent.css";
 import Loader from "../Loader/Loader";
 import { NavLink } from "react-router-dom";
 
-const url = "https://mathdep.onrender.com/api/research/";
+const url = `${API_URL}/api/research/`;
 
 function ResearchComponent() {
   const [info, setInfo] = useState([]);
