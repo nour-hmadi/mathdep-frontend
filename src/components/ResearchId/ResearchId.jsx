@@ -3,71 +3,38 @@ import React from "react";
 import "./ResearchId.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import lodo from "../../assests/imageone.png";
-import { NavLink } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
+const formatDate = (date) =>
+  date ? new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : "";
+
+// One research post: its own title, date, image and text, from /api/research/:id.
 function ResearchId() {
-  const researchId = useParams();
-  const [info, setInfo] = useState([]);
-  const [imge, setImge] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
+  const { id } = useParams();
+  const [info, setInfo] = useState(null);
 
   useEffect(() => {
-    const getAllInfo = async () => {
-      setIsLoading(true);
-      try {
-        const response = await axios.get(
-          `${API_URL}/api/research/${researchId.id}`
-        );
-        setInfo(response.data.data);
-        setImge(response.data.data.image.url)
-        setIsLoading(false);
-        // console.log(response.data.data);
-      } catch (error) {
-        console.error(`Error: ${error}`);
-        setIsLoading(false);
-      }
-    };
+    axios
+      .get(`${API_URL}/api/research/${id}`)
+      .then((response) => setInfo(response.data.data))
+      .catch((error) => console.error(`Error: ${error}`));
+  }, [id]);
 
-    getAllInfo();
-  }, []);
-
-  // console.log( info);
-
-
-
- 
- 
-
+  if (!info) return <div className="research-solo-container-page" />;
 
   return (
     <div className="research-solo-container-page">
-     
       <p className="list-links">
-        <NavLink>Home</NavLink> <span>{" > "}</span>{" "}
-        <NavLink> Academics </NavLink>
-        {" > "}
-        <NavLink>research</NavLink>
+        <NavLink to="/">Home</NavLink> <span>{" > "}</span>
+        <NavLink to="/researchs">Research</NavLink>
       </p>
-      <div >
-      {" "}
-      <h1 className="research-main-title">
-        The Ice Memory operation saved Arctic climate heritage after an
-        expedition endangered by unexpected meltwater
-      </h1>
+      <h1 className="research-main-title">{info.title}</h1>
       <p className="square-blue-filter-research">Research</p>
-      <p className="on-date-of-the-research">on date 23 may</p>
+      <p className="on-date-of-the-research">{formatDate(info.createdAt)}</p>
       <div className="image-container-research-id-page">
-        <img src={imge} className="research-id-page-main-image" />
+        <img src={info.image?.url} alt={info.title} className="research-id-page-main-image" />
       </div>
-      <h2 className="thesis-of-the-research">{info.title}</h2>
-      <p className="research-paragraph">
-     {info.description}
-      </p>
-    </div>
-
+      <p className="research-paragraph">{info.description}</p>
     </div>
   );
 }

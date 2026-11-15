@@ -33,7 +33,10 @@ line-height: 45px;
     line-height: 30px;
 }
 .research-id-page-main-image{
-    width: 65vw;
+    width: 100%;
+    max-width: 900px;
+    max-height: 480px;
+    object-fit: contain;
 }
 .image-container-research-id-page{
     position: relative;

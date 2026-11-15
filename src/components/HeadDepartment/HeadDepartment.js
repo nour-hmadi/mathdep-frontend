@@ -40,7 +40,7 @@ function HeadDepartment() {
   return (
     <div className="head-dep-section-home-page">
       <div className="blue-filter">
-        <h1 className="head-dep-title-of-the-section">Head of the Deapartment</h1>
+        <h1 className="head-dep-title-of-the-section">Head of the Department</h1>
         <div>{cards}</div>
       </div>
     </div>

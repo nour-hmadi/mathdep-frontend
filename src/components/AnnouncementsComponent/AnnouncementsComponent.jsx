@@ -62,7 +62,7 @@ function CalendarComponent() {
           </div>
           <h1 className="calendar-day-the-alert">{object.title}</h1>
           <p className="calendar-day-description">{object.description}</p>
-          <h6 className="calendar-day-post-date">{object.createdAt}</h6>
+          <h6 className="calendar-day-post-date">{new Date(object.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</h6>
         </div>
       );
     } else if (object.type === "event") {
@@ -75,7 +75,7 @@ function CalendarComponent() {
           </div>
           <h1 className="calendar-day-the-alert">{object.title}</h1>
           <p className="calendar-day-description">{object.description}</p>
-          <h6 className="calendar-day-post-date">{object.createdAt}</h6>
+          <h6 className="calendar-day-post-date">{new Date(object.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</h6>
         </div>
       );
     }

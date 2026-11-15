@@ -40,7 +40,7 @@ return (
     <div className='definition-ann-div'>
         <p className='events-n-news-title'>{object.title}</p>
         <p className='events-n-news-description'>{object.description}</p>
-        <p className='events-n-news-createdAt-even'>{object.createdAt}</p>
+        <p className='events-n-news-createdAt-even'>{new Date(object.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</p>
     </div>
 
 
@@ -56,7 +56,7 @@ else if (index%2 === 1) {
         <div className='definition-ann-div'>
             <p className='events-n-news-title'>{object.title}</p>
             <p className='events-n-news-description'>{object.description}</p>
-            <p className='events-n-news-createdAt-odd'>{object.createdAt}</p>
+            <p className='events-n-news-createdAt-odd'>{new Date(object.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</p>
         </div>
     
     

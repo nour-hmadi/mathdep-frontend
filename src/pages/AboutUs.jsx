@@ -101,15 +101,10 @@ function AboutUs() {
             <br /> of <span>Mathematics</span>
           </h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at
-            lacinia ligula. Vestue vel dapibus mi. Nulla facilisi. Nullam
-            gravida feugiat mauris, sit amet malesuada dui facilisis at. Donec
-            vehicula finibus diam, a sollicitudin massa molestie id. Nulla vel
-            pulvinar justo. Nullam volutpat eleifend erat ut ultrices. Proin
-            interdum libero ut quam semper vestibulum. Sed mollis velit id
-            libero viverra, vitae placerat urna vulputate. Curabitur non tellus
-            vitae erat egestas tempus. Vestibulum ultricies justo sed lectus
-            scelerisque, eu laoreet justo dignissim
+            The Department of Mathematics teaches pure and applied mathematics, from first-year calculus and
+            linear algebra to master's-level analysis, statistics and numerical computing. Its teachers combine
+            teaching with research, and its graduates go on to teach, to study further, or to work with data
+            in industry and finance.
           </p>
           {/* <button className="math-com-button">Join Us!</button> */}
         </div>
@@ -168,15 +163,9 @@ function AboutUs() {
             <br /> of <span>Mathematics</span>
           </h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at
-            lacinia ligula. Vestue vel dapibus mi. Nulla facilisi. Nullam
-            gravida feugiat mauris, sit amet malesuada dui facilisis at. Donec
-            vehicula finibus diam, a sollicitudin massa molestie id. Nulla vel
-            pulvinar justo. Nullam volutpat eleifend erat ut ultrices. Proin
-            interdum libero ut quam semper vestibulum. Sed mollis velit id
-            libero viverra, vitae placerat urna vulputate. Curabitur non tellus
-            vitae erat egestas tempus. Vestibulum ultricies justo sed lectus
-            scelerisque, eu laoreet justo dignissim
+            Beyond the classes, students meet in the Math Community: they post questions, share solutions and
+            organise the department's competitions and seminars. A teacher reviews every post before it
+            appears, so the space stays helpful and respectful.
           </p>
           {/* <button className="math-com-button">Join Us!</button> */}
         </div>

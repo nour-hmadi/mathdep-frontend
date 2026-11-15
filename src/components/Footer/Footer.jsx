@@ -29,8 +29,8 @@ function Footer() {
             </h1>
           </div>
           <p>
-            If you are going to use a passage LorIsum, you anythirassing hidden
-            in the middle of text. Iators on the Internet tend to.
+            A student portfolio project by Nour Hmadi. All names, news and research
+            on this site are fictional demo content.
           </p>
           <h1 className="follow-us-footer-icons-header"> Follow Us</h1>
           <div className="footer-social-media-icons">
