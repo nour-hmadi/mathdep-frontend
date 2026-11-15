@@ -1,0 +1,46 @@
+.page-header {
+  background: var(--navy);
+  color: #fff;
+  background-image: radial-gradient(circle at 85% 20%, rgba(74, 163, 223, 0.35), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(232, 72, 122, 0.25), transparent 40%);
+}
+
+.page-header__inner {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 40px var(--gutter) 44px;
+}
+
+.page-header__crumbs {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 12px;
+}
+
+.page-header__crumbs a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.page-header__crumbs a:hover {
+  color: var(--gold);
+}
+
+.page-header__current {
+  color: var(--gold);
+}
+
+.page-header__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.page-header__lead {
+  margin: 12px 0 0;
+  max-width: 720px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}

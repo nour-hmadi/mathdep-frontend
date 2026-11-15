@@ -1,57 +1,81 @@
-.even-bordered-ann-container {
-  width: 30vw;
-  display: flex;
-  flex-direction: row;
-  border-left: 5px solid #6E76D2;
-  border-bottom: 2px solid #6E76D2;
-  background-color: whitesmoke;
-  height: auto;
-  padding: 10px;
-}
-.odd-bordered-ann-container {
-    width: 30vw;
-    display: flex;
-    flex-direction: row;
-    border-left: 5px solid #FA8AF4;
-    border-bottom: 2px solid #FA8AF4;
-    background-color: whitesmoke;
-    height: auto;
-    padding: 10px;
-  }
-  
 .ann-n-events-hero-page-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px var(--gutter) 64px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  color: #162D3F;
-  padding: 100px;
+  gap: 20px;
+  color: var(--navy);
+}
+
+.even-bordered-ann-container,
+.odd-bordered-ann-container {
+  display: flex;
+  gap: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--blue);
+  border-radius: 14px;
+  padding: 20px 24px;
+}
+
+.odd-bordered-ann-container {
+  border-left-color: var(--gold);
 }
 
 .date-ann-div {
+  flex: none;
+  width: 90px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding-left: 40px;
-  padding-right: 40px;
+  justify-content: center;
 }
 
-.events-n-news-createdAt-even{
-    color: #6E76D2;
-    font-weight: 500;
+.date-ann-div h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 1;
 }
-.events-n-news-createdAt-odd{
-    color: #FA8AF4;
-    font-weight: 500;
+
+.month-ann-n-events-date {
+  margin: 4px 0 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
 }
-.month-ann-n-events-date{
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #162D3F;
+
+.events-n-news-title {
+  margin: 0 0 6px;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
-.events-n-news-description{
-    line-height: 25px;
+
+.events-n-news-description {
+  margin: 0 0 8px;
+  line-height: 1.6;
+  color: var(--ink-soft);
 }
-.events-n-news-title{
-    font-weight: 500;
+
+.events-n-news-createdAt-even,
+.events-n-news-createdAt-odd {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 560px) {
+  .even-bordered-ann-container,
+  .odd-bordered-ann-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .date-ann-div {
+    flex-direction: row;
+    gap: 8px;
+    width: auto;
+    justify-content: flex-start;
+  }
 }

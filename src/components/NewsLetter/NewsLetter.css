@@ -1,30 +1,30 @@
-.newsletter-form-subscription{
-    display: flex;
-    flex-direction: column;
-
-}
-.form-newsletter-footer{
-    display: flex;
-    flex-direction: column;
-justify-content: center;
-align-items: center;
-}
-.input-form-newsletter-footer{
-    height: 50px;
-    width: 260px;
-    border-radius: 3px;
-
+.newsletter label {
+  display: block;
+  margin-bottom: 10px;
+  line-height: 1.5;
 }
 
+.newsletter__row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 
-.subscribe-btn-form-newsletter-footer{
+.newsletter__row input {
+  flex: 1 1 160px;
+  font: inherit;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
 
-    justify-self: center;
-    display: flex;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    background-color: #EEAF16;
-    color: white;
-  
+.newsletter__row input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletter__thanks {
+  margin: 0;
+  line-height: 1.5;
 }

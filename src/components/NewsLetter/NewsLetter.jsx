@@ -1,41 +1,19 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './NewsLetter.css'
+import React, { useState } from "react";
+import "./NewsLetter.css";
 
+// There is no mailing list behind this form yet: it thanks the visitor and keeps nothing.
 const NewsletterForm = () => {
-  const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('/api/subscribe', { email });
-      setSubmitted(true);
-    } catch (error) {
-      // Handle error
-    }
-  };
-
+  if (submitted) return <p className="newsletter__thanks">Thank you. You will hear from us at the start of each semester.</p>;
   return (
-    <div>
-      {!submitted ? (
-        <div className='newsletter-form-subscription'>
-        <p>Subscribe To Our NewsLetter</p>
-        <form className='form-newsletter-footer' onSubmit={handleSubmit}>
-        
-          <input className='input-form-newsletter-footer'
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-          />
-          <button className='subscribe-btn-form-newsletter-footer' type="submit">Subscribe</button>
-        </form>
-        </div>
-      ) : (
-        <p>Thank you for subscribing!</p>
-      )}
-    </div>
+    <form className="newsletter" onSubmit={(event) => { event.preventDefault(); setSubmitted(true); }}>
+      <label htmlFor="newsletter-email">News from the department, a few times a year.</label>
+      <div className="newsletter__row">
+        <input id="newsletter-email" type="email" required placeholder="Your email" />
+        <button type="submit" className="site-button">Subscribe</button>
+      </div>
+    </form>
   );
 };
 

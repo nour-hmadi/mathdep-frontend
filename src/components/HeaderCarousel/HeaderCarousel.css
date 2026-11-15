@@ -32,7 +32,7 @@
 }
 .home-carousel-images{
   width: 100%;
-  
+
 }
 .carousel-arrow.next {
   right: 20px;
@@ -93,4 +93,18 @@
   margin-bottom: auto;
 
 }
+}
+/* Phones: the slide keeps its proportions instead of a fixed 500px band. */
+@media (max-width: 700px) {
+  .carousel-container {
+    height: auto;
+    min-height: 200px;
+  }
+
+  .home-carousel-images {
+    display: block;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
 }

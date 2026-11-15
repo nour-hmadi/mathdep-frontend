@@ -15,3 +15,20 @@
     gap: 50px;
     align-items: center;
 }
+.post_header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+}
+
+.users_avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.post_header_paragraph-one,
+.post_header_paragraph-two {
+  margin: 0;
+}

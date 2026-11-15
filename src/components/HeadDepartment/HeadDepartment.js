@@ -1,6 +1,5 @@
 import API_URL from "../../config";
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import "./SectionOne.css";
@@ -32,10 +31,9 @@ function HeadDepartment() {
         </div>
 
         <div className="image-container-head-dep">
-        <img src={object.image.url} alt="image of the head dep" className="image-head-dep"/></div>
+        <img src={object.image.url} alt={object.name} className="image-head-dep"/></div>
       </div>
     );
-    return null;
   });
   return (
     <div className="head-dep-section-home-page">

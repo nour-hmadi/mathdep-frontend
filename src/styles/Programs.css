@@ -1,0 +1,45 @@
+.program {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.program:last-child {
+  border-bottom: none;
+}
+
+.program__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.program__head h2 {
+  margin: 4px 0 0;
+}
+
+.program__facts {
+  display: flex;
+  gap: 28px;
+  margin: 0;
+}
+
+.program__facts dt {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.program__facts dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.program__columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}

@@ -1,31 +1,6 @@
-.teaching-staff-page {
-  display: flex;
-  flex-direction: row;
-  gap: 10rem;
-  align-items: center;
-  height: auto;
- 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 1rem;
-}
-
-/* Side links on the left, the cards in a grid on the right; one column on phones. */
-.teaching-staff-page {
-  grid-template-columns: 260px 1fr;
-  align-items: start;
-}
-
-.column-two-teaching-staff-page {
+.teachers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 18rem);
   gap: 1.5rem;
   justify-content: center;
-  padding: 2rem 1rem;
-}
-
-@media (max-width: 700px) {
-  .teaching-staff-page {
-    grid-template-columns: 1fr;
-  }
 }

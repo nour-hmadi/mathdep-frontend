@@ -1,55 +1,39 @@
 import API_URL from "../config";
-import React from "react";
-import '../styles/TeachingStaff.css'
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import PageHeader from "../components/PageHeader/PageHeader";
 import { TeacherCard } from "../components/TeacherCard/TeacherCard";
-import { useState, useEffect } from "react";
 import Loader from "../components/Loader/Loader";
-import PageLinks from "../components/PageLinks/PageLinks";
+import "../styles/TeachingStaff.css";
 
 const url = `${API_URL}/api/user/teachers`;    // public fields only: name, title, description and photo
+const crumbs = [{ name: "Academics", path: "/academics" }];
 
 export const TeachingStaff = () => {
-  const [teacherCards, setTeacherCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [teachers, setTeachers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get(url)
-      .then((res) => {
-        setTeacherCards(res.data.data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsLoading(false);
-      });
+    axios.get(url)
+      .then((res) => setTeachers(res.data.data))
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
-    <div className="teaching-staff-page">
-      <PageLinks />
-
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div className="column-two-teaching-staff-page">
-          {teacherCards.length > 0 ? (
-            teacherCards.map((teacher) => (
-              <TeacherCard
-                key={teacher._id}
-                name={teacher.name}
-                title={teacher.title}
-                description={teacher.description}
-                image={teacher.image}
-              />
-            ))
-          ) : (
-            <p>No teaching staff data available.</p>
-          )}
-        </div>
-      )}
-    </div>
+    <>
+      <PageHeader title="Teaching staff" crumbs={crumbs}
+                  lead="The professors and lecturers of the department, and what each of them teaches." />
+      <div className="page">
+        {isLoading ? <Loader /> : teachers.length ? (
+          <div className="teachers-grid">
+            {teachers.map((teacher) => (
+              <TeacherCard key={teacher._id} name={teacher.name} title={teacher.title}
+                           description={teacher.description} image={teacher.image} />
+            ))}
+          </div>
+        ) : <p className="empty">The staff list is not available right now.</p>}
+      </div>
+    </>
   );
 };

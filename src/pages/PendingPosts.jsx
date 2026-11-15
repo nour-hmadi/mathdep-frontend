@@ -1,6 +1,5 @@
 import API_URL from "../config";
 import React from "react";
-import "../styles/MathCommunity.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/PendingPosts.css";
@@ -42,9 +41,9 @@ function PendingPosts() {
   const filteredCards = info.filter((item) => item.status === false);
   const cards = filteredCards.map((item, index) => {
     return (
-      <div className="pending-post-container">
+      <div className="pending-post-container" key={item._id}>
         {isAdmin ? (
-          <div key={index}>
+          <div>
             <div className="post_header">
               <img className="users_avatar" alt="user's avatar" src={avatar} />
               <div className="post_definition">
@@ -53,7 +52,6 @@ function PendingPosts() {
               </div>
             </div>
             <div className="post_question">
-              {console.log(item._id)}
               <p className="">{item.title}</p>
 
               <p className="post-description">{item.description}</p>
@@ -62,15 +60,14 @@ function PendingPosts() {
         ) : (
           <h1>YOU ARE NOT AUTHORIZED</h1>
         )}
-        <button onClick={() => Delete(item._id)}>D</button>
-        <button>A</button>
+        <button onClick={() => Delete(item._id)}>Delete</button>
       </div>
     );
   });
 
   return (
     <div className="pending-posts-container-page">
-      <h1>HELLO PENDING POSTS</h1>
+      <h1>Pending posts</h1>
       {cards}
     </div>
   );

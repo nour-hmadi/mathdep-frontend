@@ -1,55 +1,40 @@
 import API_URL from "../config";
-import React from "react";
-import '../styles/Gallery.css'
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import PageHeader from "../components/PageHeader/PageHeader";
 import Loader from "../components/Loader/Loader";
+import "../styles/Gallery.css";
 
 const url = `${API_URL}/api/gallery/`;
 
 function Gallery() {
-  const [info, setInfo] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [pictures, setPictures] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getAllInfo();
+    axios.get(url)
+      .then((response) => setPictures(response.data.data || []))
+      .catch((error) => console.error(error))
+      .finally(() => setIsLoading(false));
   }, []);
 
-  const getAllInfo = async () => {
-    setIsLoading(true);
-    await axios
-      .get(`${url}`)
-      .then((response) => {
-        setInfo(response.data);
-        setIsLoading(false);
-        // console.log("response.data: " + response.data);
-      })
-      .catch((error) => {
-        console.error(`Error: ${error}`);
-        setIsLoading(false);
-      });
-  };
-
-  
-
   return (
-    <div>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div className="gallery-container">
-          {info.map((item, index) => (
-            <div key={index} className="image-container-gallery">
-              <img
-                className="home-gallery-images"
-                src={item.image.url}
-                alt="carousel image"
-              />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+    <>
+      <PageHeader title="Gallery" lead="Campus, classrooms and events, in pictures." />
+      <div className="page">
+        {isLoading ? <Loader /> : pictures.length ? (
+          <div className="gallery-grid">
+            {pictures.map((picture) => (
+              <figure key={picture._id} className="gallery-item">
+                <img src={picture.image.url} alt={picture.title || "Department gallery"} loading="lazy" />
+                {picture.title && <figcaption>{picture.title}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        ) : <p className="empty">No pictures have been published yet.</p>}
+      </div>
+    </>
   );
 }
+
 export default Gallery;

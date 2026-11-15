@@ -1,13 +1,11 @@
-.app{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
-    background-color: #ecf0f1;
-    overflow:hidden;
-
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--mist);
+  overflow-x: hidden;
 }
 
-body{
-    margin: 0px;
+.app__main {
+  flex: 1;
 }
