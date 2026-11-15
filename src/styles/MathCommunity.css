@@ -24,3 +24,28 @@
   font-size: 0.85rem;
   color: var(--ink-soft);
 }
+
+.post__replies {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.post__replies h4 {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.reply {
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  background: var(--mist);
+}
+
+.reply p {
+  margin: 4px 0 0;
+}
