@@ -18,6 +18,7 @@ import Calendar from "./pages/Calendar";
 import ResearchId from "./components/ResearchId/ResearchId";
 import Auth from "./pages/Auth/auth";
 import Scroll from './components/ScrolltoTop/Scroll.jsx'
+import ServerWakeNotice from "./components/ServerWakeNotice/ServerWakeNotice";
 import ResearchPage from "./pages/ResearchPage";
 import NewsnEvents from "./pages/NewsnEvents";
 import PendingPosts from "./pages/PendingPosts";
@@ -30,6 +31,7 @@ function App() {
     <Router>
       <div className="app">
       <Navbar />
+      <ServerWakeNotice />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/aboutus" element={<AboutUs />} />

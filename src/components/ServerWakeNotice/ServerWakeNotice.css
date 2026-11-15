@@ -1,0 +1,34 @@
+.server-wake-notice {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: #0b2239;
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.4;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.server-wake-dot {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f2b134;
+  animation: server-wake-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes server-wake-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+}

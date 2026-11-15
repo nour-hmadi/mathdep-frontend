@@ -54,7 +54,9 @@ const HeaderCarousel = () => {
   };
   // console.log("info " + info);
 
-  const cards = info.map((item, index) => {
+  // Until the slides arrive from the API (up to a minute when the free server is asleep), show the wallpaper.
+  const slides = info.length ? info : [{ title: "", image: { url: logo } }];
+  const cards = slides.map((item, index) => {
     // ("the object id is : " + item._id);
 
     return (
