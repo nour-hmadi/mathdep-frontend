@@ -1,46 +1,18 @@
-.research-solo-container-page{
-display: flex;
-flex-direction: column;
-padding: 50px;
-width: 60vw;
+.research-post {
+  max-width: 860px;
 }
-.square-blue-filter-research {
-  background-color: #0b2239;
-  height: 50px;
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  color: white;
-  align-self: flex-start;
-  padding: 2px 5px;
+
+.research-post__image {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  background: var(--navy);
+  border-radius: 16px;
+  margin-bottom: 28px;
 }
-.list-links{
-color: #0b2239;
-}
-.list-links:active{
-    color:#0b2239;
-}
-a{
-    text-decoration: none;
-}
-a:hover{
-    color: #3162A4;  
-}
-.research-main-title, .thesis-of-the-research{
-line-height: 45px;
-}
-.research-paragraph{
-    line-height: 30px;
-}
-.research-id-page-main-image{
-    width: 100%;
-    max-width: 900px;
-    max-height: 480px;
-    object-fit: contain;
-}
-.image-container-research-id-page{
-    position: relative;
-    width: auto;
-    overflow: hidden;
-    height: auto;
+
+.research-post p {
+  font-size: 1.1rem;
+  line-height: 1.8;
 }

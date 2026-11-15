@@ -1,41 +1,37 @@
 import API_URL from "../../config";
-import React from "react";
-import "./ResearchId.css";
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import PageHeader from "../PageHeader/PageHeader";
+import Loader from "../Loader/Loader";
+import "./ResearchId.css";
 
 const formatDate = (date) =>
   date ? new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : "";
+const crumbs = [{ name: "Research", path: "/researchs" }];
 
 // One research post: its own title, date, image and text, from /api/research/:id.
 function ResearchId() {
   const { id } = useParams();
-  const [info, setInfo] = useState(null);
+  const [post, setPost] = useState(null);
+  const [missing, setMissing] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`${API_URL}/api/research/${id}`)
-      .then((response) => setInfo(response.data.data))
-      .catch((error) => console.error(`Error: ${error}`));
+    axios.get(`${API_URL}/api/research/${id}`)
+      .then((response) => setPost(response.data.data))
+      .catch(() => setMissing(true));
   }, [id]);
 
-  if (!info) return <div className="research-solo-container-page" />;
-
+  if (missing) return <PageHeader title="Research post not found" crumbs={crumbs} />;
+  if (!post) return <><PageHeader title="Research" crumbs={crumbs} /><Loader /></>;
   return (
-    <div className="research-solo-container-page">
-      <p className="list-links">
-        <NavLink to="/">Home</NavLink> <span>{" > "}</span>
-        <NavLink to="/researchs">Research</NavLink>
-      </p>
-      <h1 className="research-main-title">{info.title}</h1>
-      <p className="square-blue-filter-research">Research</p>
-      <p className="on-date-of-the-research">{formatDate(info.createdAt)}</p>
-      <div className="image-container-research-id-page">
-        <img src={info.image?.url} alt={info.title} className="research-id-page-main-image" />
-      </div>
-      <p className="research-paragraph">{info.description}</p>
-    </div>
+    <>
+      <PageHeader title={post.title} crumbs={crumbs} lead={`Published ${formatDate(post.createdAt)}`} />
+      <article className="page research-post">
+        <img src={post.image?.url} alt="" className="research-post__image" />
+        <p>{post.description}</p>
+      </article>
+    </>
   );
 }
 
