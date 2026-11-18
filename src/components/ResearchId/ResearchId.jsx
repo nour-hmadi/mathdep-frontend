@@ -29,7 +29,11 @@ function ResearchId() {
       <PageHeader title={post.title} crumbs={crumbs} lead={`Published ${formatDate(post.createdAt)}`} />
       <article className="page research-post">
         <img src={post.image?.url} alt="" className="research-post__image" />
+        {post.authors && <p className="research-post__authors">By {post.authors}</p>}
         <p>{post.description}</p>
+        {post.pdf?.url && (
+          <a className="site-button" href={post.pdf.url} target="_blank" rel="noreferrer">Read the full paper (PDF)</a>
+        )}
       </article>
     </>
   );

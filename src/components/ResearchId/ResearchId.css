@@ -16,3 +16,8 @@
   font-size: 1.1rem;
   line-height: 1.8;
 }
+
+.research-post__authors {
+  font-weight: 600;
+  color: var(--navy);
+}
