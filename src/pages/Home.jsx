@@ -29,7 +29,14 @@ function Home() {
     load("/api/headdepartment/", (data) => data.data[0], setHead);
   }, []);
 
-  const hero = slides[0]?.image?.url || wallpaper;
+  // The pictures at the top take turns every 6 seconds
+  const [slide, setSlide] = useState(0);
+  useEffect(() => {
+    if (slides.length < 2) return undefined;
+    const timer = setInterval(() => setSlide((current) => (current + 1) % slides.length), 6000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+  const hero = slides[slide]?.image?.url || wallpaper;
   const latestNews = [...news].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 3);
   const latestResearch = [...research].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 3);
 
@@ -50,7 +57,7 @@ function Home() {
             </div>
           </div>
           <div className="hero__picture">
-            <img src={hero} alt="" />
+            <img key={hero} src={hero} alt="" className="hero__slide" />
           </div>
         </div>
         <div className="hero__stats">

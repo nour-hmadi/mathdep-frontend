@@ -435,3 +435,23 @@
   object-fit: cover;
   background: var(--mist);
 }
+
+/* A tab with several parts (Home page) */
+.admin-section + .admin-section {
+  margin-top: 40px;
+}
+
+.admin-section h3 {
+  margin: 0 0 4px;
+  color: var(--navy);
+}
+
+.admin-section > .admin-form__hint {
+  margin: 0 0 12px;
+}
+
+.admin-form__preview--portrait {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}

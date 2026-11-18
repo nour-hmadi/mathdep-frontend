@@ -7,6 +7,7 @@ import Staff from "./Staff";
 import Users from "./Users";
 import Gallery from "./Gallery";
 import Research from "./Research";
+import Homepage from "./Homepage";
 import "./admin.css";
 
 // The admin's workspace: one tab for each part of the site.
@@ -19,6 +20,7 @@ const TABS = [
   { id: "users", name: "Users", Component: Users },
   { id: "gallery", name: "Gallery", Component: Gallery },
   { id: "research", name: "Research", Component: Research },
+  { id: "homepage", name: "Home page", Component: Homepage },
 ];
 
 function AdminDashboard() {
