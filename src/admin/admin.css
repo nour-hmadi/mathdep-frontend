@@ -362,3 +362,54 @@
 .admin .table td {
   padding: 10px 12px;
 }
+
+/* Past-due news: a warning above the table, and the rows that need a decision */
+.admin-alert {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border: 1px solid #f5d38a;
+  border-radius: 10px;
+  background: #fff8e6;
+  color: #7a4a00;
+  font-weight: 600;
+}
+
+.admin .table .data-table__row--alert td {
+  background: #fffaf0;
+}
+
+/* Extra form pieces: a narrow first field, a checkbox line and a hint */
+.admin-form__row--narrow-first {
+  grid-template-columns: 1fr 2fr;
+}
+
+.admin-form label small {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.admin-form .admin-form__check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: end;
+  padding-bottom: 10px;
+  font-weight: 600;
+}
+
+.admin-form__check input {
+  width: 18px;
+  height: 18px;
+}
+
+.admin-form__hint {
+  margin: -4px 0 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 600px) {
+  .admin-form__row--narrow-first {
+    grid-template-columns: 1fr;
+  }
+}

@@ -10,9 +10,11 @@ function Overview({ openTab }) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    Promise.all([api.get("/api/posts/pending"), api.get("/api/announcements"), api.get("/api/user")])
+    Promise.all([api.get("/api/posts/pending"), api.get("/api/announcements/all"), api.get("/api/user")])
       .then(([pending, news, users]) => setRows([
-        { tab: "pending", section: "Posts waiting for approval", count: pending.data.length, attention: pending.data.length > 0 },
+        { tab: "pending", section: "Posts waiting for approval", count: pending.data.length, attention: true },
+        { tab: "news", section: "News past the due date, still on the site", attention: true,
+          count: news.data.data.filter((item) => item.status === "past-due").length },
         { tab: "news", section: "News and events", count: news.data.data.length },
         { tab: "staff", section: "Teaching staff", count: users.data.data.filter(isTeacher).length },
         { tab: null, section: "User accounts", count: users.data.data.length },
@@ -34,7 +36,7 @@ function Overview({ openTab }) {
           <tbody>
             {rows.map((row) => (
               <tr key={row.section}>
-                <td>{row.section} {row.attention && <span className="status status--alert">Needs attention</span>}</td>
+                <td>{row.section} {row.attention && row.count > 0 && <span className="status status--alert">⚠️ Needs attention</span>}</td>
                 <td>{row.count}</td>
                 <td className="data-table__actions">
                   {row.tab && (

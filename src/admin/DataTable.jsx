@@ -5,6 +5,7 @@ import React, { useState } from "react";
 //   columns: [{ key, label, value(row), text(row), render(row), sortable }]
 //     value() is what sorting uses, text() what the search looks in (both default to row[key])
 //   filters: [{ key, label, options: [[value, label], ...], match(row, value) }]
+//   rowClass(row): an optional class for a row, e.g. to highlight rows that need attention
 const valueOf = (column, row) => (column.value ? column.value(row) : row[column.key]);
 const textOf = (column, row) => (column.text ? column.text(row) : valueOf(column, row));
 
@@ -15,7 +16,7 @@ const compare = (a, b) => {
   return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: "base" });
 };
 
-function DataTable({ rows, columns, filters = [], actions, toolbar, searchPlaceholder = "Search…", empty = "Nothing here yet." }) {
+function DataTable({ rows, columns, filters = [], actions, toolbar, rowClass, searchPlaceholder = "Search…", empty = "Nothing here yet." }) {
   const [query, setQuery] = useState("");
   const [chosen, setChosen] = useState({});                       // filter key -> chosen value ("" means all)
   const [sort, setSort] = useState({ key: null, direction: 1 });   // 1 = A to Z, -1 = Z to A
@@ -67,7 +68,7 @@ function DataTable({ rows, columns, filters = [], actions, toolbar, searchPlaceh
           </thead>
           <tbody>
             {shown.length ? shown.map((row) => (
-              <tr key={row._id}>
+              <tr key={row._id} className={rowClass ? rowClass(row) : undefined}>
                 {columns.map((column) => (
                   <td key={column.key}>{column.render ? column.render(row) : textOf(column, row)}</td>
                 ))}
