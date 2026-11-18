@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader/PageHeader";
-import { ADMISSIONS } from "../content/site";
+import useSiteContent from "../content/useSiteContent";
 
 const crumbs = [{ name: "Academics", path: "/academics" }];
 
 function Admissions() {
+  const { ADMISSIONS } = useSiteContent();
   return (
     <>
       <PageHeader title="Admissions" crumbs={crumbs}

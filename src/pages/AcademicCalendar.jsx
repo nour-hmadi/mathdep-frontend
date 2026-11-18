@@ -1,10 +1,11 @@
 import React from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
-import { CALENDAR } from "../content/site";
+import useSiteContent from "../content/useSiteContent";
 
 const crumbs = [{ name: "Academics", path: "/academics" }];
 
 function AcademicCalendar() {
+  const { CALENDAR } = useSiteContent();
   return (
     <>
       <PageHeader title="Calendar and exams" crumbs={crumbs}

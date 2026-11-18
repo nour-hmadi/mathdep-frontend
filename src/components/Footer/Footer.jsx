@@ -7,6 +7,7 @@ import { IoLogoLinkedin } from "react-icons/io";
 import logo from "../../assests/facultyofsciences.jpg";
 import SocialMediaIcon from "../SocialMediaIcon/SocialMediaIcon";
 import NewsletterForm from "../NewsLetter/NewsLetter";
+import useSiteContent from "../../content/useSiteContent";
 import "./Footer.css";
 
 const columns = [
@@ -17,6 +18,7 @@ const columns = [
 ];
 
 function Footer() {
+  const { SETTINGS } = useSiteContent();
   return (
     <footer className="footer">
       <div className="footer__inner">
@@ -26,12 +28,12 @@ function Footer() {
             <span><strong>MATH</strong>dep</span>
           </div>
           <p>A student portfolio project by Nour Hmadi. All names, news and research on this site are fictional demo content.</p>
-          <p className="footer__address">Lebanese University, Faculty of Sciences<br />Hadath campus, building B, floor 2<br />+961 1 000 000</p>
+          <p className="footer__address">Lebanese University, Faculty of Sciences<br />{SETTINGS.address}<br />{SETTINGS.phone}</p>
           <div className="footer__social">
-            <SocialMediaIcon icon={<AiFillInstagram />} />
-            <SocialMediaIcon icon={<GrFacebookOption />} />
-            <SocialMediaIcon icon={<BsYoutube />} />
-            <SocialMediaIcon icon={<IoLogoLinkedin />} />
+            {SETTINGS.instagram && <SocialMediaIcon icon={<AiFillInstagram />} href={SETTINGS.instagram} label="Instagram" />}
+            {SETTINGS.facebook && <SocialMediaIcon icon={<GrFacebookOption />} href={SETTINGS.facebook} label="Facebook" />}
+            {SETTINGS.youtube && <SocialMediaIcon icon={<BsYoutube />} href={SETTINGS.youtube} label="YouTube" />}
+            {SETTINGS.linkedin && <SocialMediaIcon icon={<IoLogoLinkedin />} href={SETTINGS.linkedin} label="LinkedIn" />}
           </div>
         </div>
         {columns.map((column) => (

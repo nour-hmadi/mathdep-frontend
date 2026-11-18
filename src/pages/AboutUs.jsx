@@ -1,12 +1,14 @@
 import React from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import "../styles/AboutUs.css";
+import useSiteContent from "../content/useSiteContent";
 
 // The campus photos also fill the Gallery page: see public/images/gallery and the backend seed.
 const photo = (n) => `/images/gallery/campus-${n}.jpg`;
 const [one, two, three, four, five, six, seven] = [1, 2, 3, 4, 5, 6, 7].map(photo);
 
 function AboutUs() {
+  const { SETTINGS } = useSiteContent();
   return (
     <div>
       <PageHeader title="About the department" lead="Who we are, what we teach, and the community around the classes." />
@@ -16,12 +18,7 @@ function AboutUs() {
             About The<span> Department</span>
             <br /> of <span>Mathematics</span>
           </h1>
-          <p>
-            The Department of Mathematics teaches pure and applied mathematics, from first-year calculus and
-            linear algebra to master's-level analysis, statistics and numerical computing. Its teachers combine
-            teaching with research, and its graduates go on to teach, to study further, or to work with data
-            in industry and finance.
-          </p>
+          <p>{SETTINGS.aboutDepartment}</p>
         </div>
         <div className="photos-grid-container-home">
           <div className="row-one row">
@@ -75,11 +72,7 @@ function AboutUs() {
             About The<span> Community</span>
             <br /> of <span>Mathematics</span>
           </h1>
-          <p>
-            Beyond the classes, students meet in the Math Community: they post questions, share solutions and
-            organise the department's competitions and seminars. A teacher reviews every post before it
-            appears, so the space stays helpful and respectful.
-          </p>
+          <p>{SETTINGS.aboutCommunity}</p>
         </div>
       </div>
 

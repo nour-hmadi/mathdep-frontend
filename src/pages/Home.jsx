@@ -6,6 +6,7 @@ import { FaGraduationCap, FaChalkboardTeacher, FaBookOpen } from "react-icons/fa
 import { TeacherCard } from "../components/TeacherCard/TeacherCard";
 import { NAVIGATION } from "../content/site";
 import wallpaper from "../assests/wallpaper.jpg";
+import useSiteContent from "../content/useSiteContent";
 import "../styles/Home.css";
 
 const formatDate = (date) =>
@@ -14,6 +15,7 @@ const academics = NAVIGATION.find((section) => section.title === "Academics");
 
 // The home page: one request per section, and each section renders as soon as its data arrives.
 function Home() {
+  const { SETTINGS } = useSiteContent();
   const [slides, setSlides] = useState([]);
   const [research, setResearch] = useState([]);
   const [news, setNews] = useState([]);
@@ -47,10 +49,7 @@ function Home() {
           <div className="hero__text">
             <p className="hero__eyebrow">Lebanese University · Faculty of Sciences</p>
             <h1>Department of <span>Mathematics</span></h1>
-            <p className="hero__lead">
-              Pure and applied mathematics, from first-year calculus to research in analysis, algebra, statistics and
-              numerical computing. A small department where every student knows their professors.
-            </p>
+            <p className="hero__lead">{SETTINGS.heroLead}</p>
             <div className="hero__actions">
               <Link to="/academics/programs" className="site-button">Our programs</Link>
               <Link to="/academics/admissions" className="site-button site-button--ghost">How to apply</Link>
@@ -61,7 +60,7 @@ function Home() {
           </div>
         </div>
         <div className="hero__stats">
-          <div className="stat"><FaGraduationCap aria-hidden="true" /><strong>350+</strong><span>Students</span></div>
+          <div className="stat"><FaGraduationCap aria-hidden="true" /><strong>{SETTINGS.studentsCount}</strong><span>Students</span></div>
           <div className="stat"><FaChalkboardTeacher aria-hidden="true" /><strong>{teachers.length || "…"}</strong><span>Teachers</span></div>
           <div className="stat"><FaBookOpen aria-hidden="true" /><strong>{research.length || "…"}</strong><span>Research projects</span></div>
         </div>

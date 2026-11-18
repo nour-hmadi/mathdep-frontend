@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader/PageHeader";
-import { COURSES } from "../content/site";
+import useSiteContent from "../content/useSiteContent";
 
 const crumbs = [{ name: "Academics", path: "/academics" }];
-const credits = (semester) => semester.courses.reduce((sum, [, , ects]) => sum + ects, 0);
+const credits = (semester) => semester.courses.reduce((sum, [, , ects]) => sum + (ects || 0), 0);
 
 // The bachelor's courses, one table per semester.
 function Courses() {
+  const { COURSES } = useSiteContent();
   return (
     <>
       <PageHeader title="Courses" crumbs={crumbs}
@@ -25,8 +26,12 @@ function Courses() {
                       <tr><th>Code</th><th>{semester.name}</th><th className="number">ECTS</th></tr>
                     </thead>
                     <tbody>
-                      {semester.courses.map(([code, title, ects]) => (
-                        <tr key={code}><td>{code}</td><td>{title}</td><td className="number">{ects}</td></tr>
+                      {semester.courses.map(([code, title, ects, syllabus]) => (
+                        <tr key={code}>
+                          <td>{code}</td>
+                          <td>{title}{syllabus && <> · <a href={syllabus} target="_blank" rel="noreferrer">Syllabus (PDF)</a></>}</td>
+                          <td className="number">{ects}</td>
+                        </tr>
                       ))}
                       <tr><td /><td><strong>Total</strong></td><td className="number"><strong>{credits(semester)}</strong></td></tr>
                     </tbody>

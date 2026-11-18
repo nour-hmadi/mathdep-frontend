@@ -1,15 +1,16 @@
 import React from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
-import { PROGRAMS } from "../content/site";
+import useSiteContent from "../content/useSiteContent";
 import "../styles/Programs.css";
 
 const crumbs = [{ name: "Academics", path: "/academics" }];
 
 function Programs() {
+  const { PROGRAMS } = useSiteContent();
   return (
     <>
       <PageHeader title="Programs" crumbs={crumbs}
-                  lead="Four programs, from a first degree in mathematics to a research master's and a teaching diploma." />
+                  lead="Every program of the department, from a first degree in mathematics to a research master's and a teaching diploma." />
       <div className="page">
         {PROGRAMS.map((program) => (
           <article key={program.name} className="program">
