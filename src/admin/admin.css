@@ -164,3 +164,32 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* People with a photo (Teaching staff, Users) */
+.admin-form__row--two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.admin-person {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.admin-person img {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--mist);
+}
+
+.admin-person__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-person--hidden {
+  opacity: 0.6;
+}
