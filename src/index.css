@@ -292,3 +292,37 @@ a.panel:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* News and events: where each item stands today */
+.news-state {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.news-state--soon {
+  background: #e8f1fb;
+  color: var(--blue);
+}
+
+.news-state--now {
+  background: #eef6ee;
+  color: #1d5e2b;
+}
+
+.news-state--past {
+  background: #f1f3f5;
+  color: var(--ink-soft);
+}
+
+.news-item--past {
+  opacity: 0.75;
+}
+
+.news-item .news-item__period {
+  margin: 0 0 6px;
+  font-weight: 600;
+  color: var(--navy);
+}
