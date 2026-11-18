@@ -7,6 +7,8 @@ import Loader from "../components/Loader/Loader";
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July",
   "August", "September", "October", "November", "December"];
 const EMPTY = { title: "", type: "announcement", day: "", month: MONTHS[new Date().getMonth()], description: "" };
+// The last day of each month (February allows 29, because the year is not stored)
+const daysIn = (month) => ({ February: 29, April: 30, June: 30, September: 30, November: 30 }[month] || 31);
 
 function News() {
   const [items, setItems] = useState(null);
@@ -55,7 +57,7 @@ function News() {
               <option value="event">Event</option>
             </select>
           </label>
-          <label>Day<input name="day" type="number" min="1" max="31" value={form.day} onChange={change} required /></label>
+          <label>Day<input name="day" type="number" min="1" max={daysIn(form.month)} value={form.day} onChange={change} required /></label>
           <label>Month
             <select name="month" value={form.month} onChange={change}>
               {MONTHS.map((month) => <option key={month}>{month}</option>)}
