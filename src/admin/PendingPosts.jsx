@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../api";
 import Loader from "../components/Loader/Loader";
 import DataTable from "./DataTable";
+import MathText from "../components/MathText/MathText";
 import { formatDate, time } from "./format";
 
 // Students' posts waiting for approval. Approving one publishes it on the Math Community page.
@@ -40,7 +41,7 @@ function PendingPosts() {
           { key: "name", label: "Author", value: (post) => post.name || "A student" },
           { key: "title", label: "Title" },
           { key: "description", label: "Post",
-            render: (post) => <span className="data-table__text" title={post.description}>{post.description}</span> },
+            render: (post) => <span className="data-table__text" title={post.description}><MathText text={post.description} /></span> },
         ]}
         actions={(post) => (
           <>

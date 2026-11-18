@@ -1,42 +1,99 @@
-import API_URL from "../config";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import api from "../api";
 import PageHeader from "../components/PageHeader/PageHeader";
 import Loader from "../components/Loader/Loader";
+import MathText from "../components/MathText/MathText";
+import MathEditor from "../components/MathEditor/MathEditor";
 import "../styles/MathCommunity.css";
 
 const formatDate = (date) =>
   date ? new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
 const postOf = (comment) => (comment.post && comment.post._id) || comment.post;   // populated or plain id
 
-// The students' board: approved posts, newest first, each with its comments. A teacher approves every post.
+// The students' board. Everyone can read the approved posts and their replies.
+// A signed-in student can ask a question (a teacher approves it before it appears) and reply to posts.
+// Math is written in LaTeX between $ signs, with a toolbar and a live preview.
 function MathCommunity() {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [question, setQuestion] = useState({ title: "", description: "" });
+  const [asking, setAsking] = useState(false);
+  const [replyTo, setReplyTo] = useState(null);       // the post whose reply box is open
+  const [reply, setReply] = useState("");
+  const [notice, setNotice] = useState("");
+  const [error, setError] = useState("");
   const signedIn = Boolean(sessionStorage.getItem("token"));
+  const me = sessionStorage.getItem("id");
+  const isAdmin = sessionStorage.getItem("isAdmin") === "true";
 
-  useEffect(() => {
-    Promise.all([axios.get(`${API_URL}/api/posts/`), axios.get(`${API_URL}/api/comments/`).catch(() => ({ data: [] }))])
+  const load = () =>
+    Promise.all([api.get("/api/posts"), api.get("/api/comments").catch(() => ({ data: [] }))])
       .then(([postsRes, commentsRes]) => {
-        setPosts((postsRes.data || []).filter((post) => post.status === true)
-          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
+        setPosts(postsRes.data || []);
         setComments(commentsRes.data || []);
       })
-      .catch((error) => console.error(error))
+      .catch((err) => console.error(err))
       .finally(() => setIsLoading(false));
-  }, []);
+
+  useEffect(() => { load(); }, []);
+
+  const failed = (err) => setError(err.response?.data?.message || "That didn't work. Try again.");
+
+  const ask = (event) => {
+    event.preventDefault();
+    setError("");
+    api.post("/api/posts", question)
+      .then(() => {
+        setNotice("Thank you! A teacher will review your post, then it will appear here.");
+        setQuestion({ title: "", description: "" });
+        setAsking(false);
+      })
+      .catch(failed);
+  };
+
+  const send = (event, postId) => {
+    event.preventDefault();
+    setError("");
+    api.post("/api/comments", { postId, description: reply })
+      .then(() => { setReply(""); setReplyTo(null); load(); })
+      .catch(failed);
+  };
+
+  const remove = (comment) => {
+    if (window.confirm("Delete this reply?")) api.delete(`/api/comments/${comment._id}`).then(load).catch(failed);
+  };
 
   return (
     <>
       <PageHeader title="Math Community" crumbs={[{ name: "Community", path: "/mathcommunity" }]}
                   lead="Questions, solutions and ideas shared between the department's students. A teacher reviews every post before it appears." />
       <div className="page">
-        <p className="note">
-          {signedIn ? "Posting from the site is coming soon. For now, send your post to the secretariat and a teacher will publish it."
-                    : <>Students <Link to="/login">sign in</Link> to take part. Everyone can read.</>}
-        </p>
+        {!signedIn && <p className="note">Students <Link to="/login">sign in</Link> to ask and reply. Everyone can read.</p>}
+        {notice && <p className="note note--success" role="status">{notice}</p>}
+        {error && <p className="note note--error" role="alert">{error}</p>}
+
+        {signedIn && (asking ? (
+          <form className="panel community-form" onSubmit={ask}>
+            <h3>Ask a question or share a solution</h3>
+            <label>Title
+              <input value={question.title} onChange={(event) => setQuestion({ ...question, title: event.target.value })} required />
+            </label>
+            <MathEditor label="Your post" rows={6} value={question.description}
+                        onChange={(description) => setQuestion({ ...question, description })}
+                        placeholder="Explain your question. Math goes between $ signs, like $\frac{1}{2}$." />
+            <div className="community-form__buttons">
+              <button type="button" className="community-button community-button--light" onClick={() => setAsking(false)}>Cancel</button>
+              <button type="submit" className="community-button">Send for review</button>
+            </div>
+          </form>
+        ) : (
+          <button type="button" className="community-button community-ask" onClick={() => { setAsking(true); setNotice(""); }}>
+            + Ask a question
+          </button>
+        ))}
+
         {isLoading ? <Loader /> : posts.length ? (
           <div className="posts">
             {posts.map((post) => {
@@ -52,19 +109,34 @@ function MathCommunity() {
                     </div>
                   </header>
                   <h3>{post.title}</h3>
-                  <p>{post.description}</p>
+                  <p><MathText text={post.description} /></p>
                   {replies.length > 0 && (
                     <div className="post__replies">
                       <h4>{replies.length} {replies.length === 1 ? "reply" : "replies"}</h4>
-                      {replies.map((reply) => (
-                        <div key={reply._id} className="reply">
-                          <strong>{reply.name || "A student"}</strong>
-                          <span className="post__date"> · {formatDate(reply.createdAt)}</span>
-                          <p>{reply.description}</p>
+                      {replies.map((comment) => (
+                        <div key={comment._id} className="reply">
+                          <strong>{comment.name || "A student"}</strong>
+                          <span className="post__date"> · {formatDate(comment.createdAt)}</span>
+                          {(isAdmin || comment.user === me) && (
+                            <button type="button" className="reply__delete" onClick={() => remove(comment)}>Delete</button>
+                          )}
+                          <p><MathText text={comment.description} /></p>
                         </div>
                       ))}
                     </div>
                   )}
+                  {signedIn && (replyTo === post._id ? (
+                    <form className="community-form community-form--reply" onSubmit={(event) => send(event, post._id)}>
+                      <MathEditor label="Your reply" rows={3} value={reply} onChange={setReply} placeholder="Write your reply…" />
+                      <div className="community-form__buttons">
+                        <button type="button" className="community-button community-button--light" onClick={() => setReplyTo(null)}>Cancel</button>
+                        <button type="submit" className="community-button">Reply</button>
+                      </div>
+                    </form>
+                  ) : (
+                    <button type="button" className="community-button community-button--light"
+                            onClick={() => { setReplyTo(post._id); setReply(""); }}>Reply</button>
+                  ))}
                 </article>
               );
             })}

@@ -49,3 +49,83 @@
 .reply p {
   margin: 4px 0 0;
 }
+
+/* Asking and replying (signed-in students) */
+.community-ask {
+  margin-bottom: 24px;
+}
+
+.community-form {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.community-form h3 {
+  margin: 0;
+}
+
+.community-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.community-form input {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.community-form--reply {
+  margin: 16px 0 0;
+}
+
+.community-form__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.community-button {
+  padding: 9px 16px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--navy);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.community-button--light {
+  border-color: var(--line);
+  background: #fff;
+}
+
+.reply__delete {
+  margin-left: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.8rem;
+  color: #b42318;
+  cursor: pointer;
+}
+
+.note--success {
+  border-color: #b7dfb9;
+  background: #eef6ee;
+  color: #1d5e2b;
+}
+
+.note--error {
+  border-color: #f1c4c4;
+  background: #fef3f2;
+  color: #b42318;
+}

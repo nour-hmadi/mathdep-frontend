@@ -1,0 +1,5 @@
+/* Math on its own line ($$…$$) scrolls sideways on small screens instead of overflowing */
+.math-block {
+  display: block;
+  overflow-x: auto;
+}
