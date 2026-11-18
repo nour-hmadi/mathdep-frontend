@@ -20,8 +20,7 @@ import Gallery from "./pages/Gallery";
 import ContactUs from "./pages/ContactUs";
 import Auth from "./pages/Auth/auth";
 import Register from "./pages/Auth/Register";
-import PendingPosts from "./pages/PendingPosts";
-import Dashboard from "./Dashboard/Pages/Dashboard.jsx";
+import AdminDashboard from "./admin/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import "./App.css";
 
@@ -51,8 +50,8 @@ function App() {
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/login" element={<Auth />} />
             <Route path="/registerusers" element={<Register />} />
-            <Route path="/pendingposts" element={<PendingPosts />} />
-            <Route path="/admin-dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            <Route path="/pendingposts" element={<Navigate to="/admin-dashboard" replace />} />
+            <Route path="/admin-dashboard" element={<PrivateRoute><AdminDashboard /></PrivateRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

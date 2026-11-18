@@ -1,0 +1,106 @@
+/* Admin dashboard: the tabs on the left, the chosen section on the right. */
+.admin {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.admin__tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  position: sticky;
+  top: 96px;
+}
+
+.admin__tab {
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin__tab:hover {
+  background: var(--mist);
+}
+
+.admin__tab--active,
+.admin__tab--active:hover {
+  background: var(--navy);
+  color: #fff;
+}
+
+.admin__content {
+  min-width: 0;
+}
+
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.admin-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font: inherit;
+  text-align: left;
+  color: var(--ink-soft);
+}
+
+.admin-card strong {
+  font-size: 2.2rem;
+  color: var(--navy);
+}
+
+.admin-card--action {
+  cursor: pointer;
+  border-color: var(--gold);
+}
+
+.admin-card--action:hover {
+  background: #fffaf0;
+}
+
+.admin-list {
+  display: grid;
+  gap: 16px;
+}
+
+.admin-item__meta {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.admin-item__actions {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 800px) {
+  .admin {
+    grid-template-columns: 1fr;
+  }
+
+  .admin__tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    position: static;
+  }
+
+  .admin__tab {
+    white-space: nowrap;
+  }
+}
