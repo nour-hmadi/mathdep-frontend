@@ -40,3 +40,12 @@
   color: #b42318;
   margin: 0;
 }
+
+/* The trap field for spam robots: off screen, never seen by people */
+.contact-form__trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

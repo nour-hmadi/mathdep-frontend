@@ -21,6 +21,7 @@ function Overview({ openTab }) {
   const [rows, setRows] = useState(null);
   const [top, setTop] = useState([]);
   const [recent, setRecent] = useState([]);
+  const [extra, setExtra] = useState({ unread: 0, subscribers: 0 });
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -34,6 +35,10 @@ function Overview({ openTab }) {
         { tab: "users", section: "User accounts", count: users.data.data.length },
       ]))
       .catch(() => setError(true));
+    Promise.all([api.get("/api/messages"), api.get("/api/subscribers")])
+      .then(([messages, subscribers]) => setExtra({ unread: messages.data.data.filter((item) => !item.read).length,
+                                                    subscribers: subscribers.data.data.length }))
+      .catch(() => {});
     api.get("/api/activity/me/top").then((res) => setTop(res.data.data)).catch(() => {});
     api.get("/api/activity/recent").then((res) => setRecent(res.data.data)).catch(() => {});
   }, []);
@@ -75,7 +80,10 @@ function Overview({ openTab }) {
           <table className="table">
             <thead><tr><th>Section</th><th>Items</th><th><span className="sr-only">Open</span></th></tr></thead>
             <tbody>
-              {rows.map((row) => (
+              {[...rows.slice(0, 1),
+                { tab: "messages", section: "New messages from the Contact page", count: extra.unread, attention: true },
+                ...rows.slice(1),
+                { tab: "newsletter", section: "Newsletter subscribers", count: extra.subscribers }].map((row) => (
                 <tr key={row.section}>
                   <td>{row.section} {row.attention && row.count > 0 && <span className="status status--alert">⚠️ Needs attention</span>}</td>
                   <td>{row.count}</td>

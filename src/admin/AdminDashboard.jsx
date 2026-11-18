@@ -8,6 +8,8 @@ import Users from "./Users";
 import Gallery from "./Gallery";
 import Research from "./Research";
 import Homepage from "./Homepage";
+import Messages from "./Messages";
+import Newsletter from "./Newsletter";
 import { Programs, Courses, CalendarAndAdmissions, SiteText } from "./SiteContent";
 import "./admin.css";
 
@@ -17,11 +19,13 @@ const GROUPS = [
   ["Every day", [
     { id: "overview", name: "Overview", Component: Overview },
     { id: "pending", name: "Pending posts", Component: PendingPosts },
+    { id: "messages", name: "Messages", Component: Messages },
     { id: "news", name: "News and events", Component: News },
   ]],
   ["People", [
     { id: "staff", name: "Teaching staff", Component: Staff },
     { id: "users", name: "Users", Component: Users },
+    { id: "newsletter", name: "Newsletter", Component: Newsletter },
   ]],
   ["Site content", [
     { id: "homepage", name: "Home page", Component: Homepage },

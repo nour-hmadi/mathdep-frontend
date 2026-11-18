@@ -503,3 +503,14 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* A message opened in full */
+.admin-letter {
+  margin: 0 0 16px;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+a.admin-button {
+  text-decoration: none;
+}
