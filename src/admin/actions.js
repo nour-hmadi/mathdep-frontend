@@ -1,0 +1,30 @@
+// What each recorded action means for the admin, and which tab it belongs to.
+// The backend names actions "<section>.<create|update|delete>" (see middlewares/activityMiddleware.js).
+const ACTIONS = {
+  "announcements.create": ["Post news or an event", "news"],
+  "announcements.update": ["Edit, hide or keep news", "news"],
+  "announcements.delete": ["Delete news", "news"],
+  "posts.create": ["Post in the Math Community", null],
+  "posts.update": ["Approve student posts", "pending"],
+  "posts.delete": ["Delete student posts", "pending"],
+  "comments.create": ["Reply in the Math Community", null],
+  "comments.delete": ["Delete replies", null],
+  "user.create-teacher": ["Add a teacher", "staff"],
+  "user.update": ["Edit, hide or deactivate an account", "users"],
+  "user.role": ["Change who is an admin", "users"],
+  "user.delete": ["Delete an account", "users"],
+  "gallery.create": ["Add gallery photos", "gallery"],
+  "gallery.update": ["Edit gallery photos", "gallery"],
+  "gallery.delete": ["Delete gallery photos", "gallery"],
+  "research.create": ["Publish research", "research"],
+  "research.update": ["Edit or hide research", "research"],
+  "research.delete": ["Delete research", "research"],
+  "carousel.create": ["Add home page pictures", "homepage"],
+  "carousel.update": ["Edit home page pictures", "homepage"],
+  "carousel.delete": ["Delete home page pictures", "homepage"],
+  "headdepartment.create": ["Add the head of department", "homepage"],
+  "headdepartment.update": ["Edit the head of department", "homepage"],
+  "headdepartment.delete": ["Remove the head of department", "homepage"],
+};
+
+export const describe = (action) => ACTIONS[action] || [action, null];
