@@ -69,3 +69,57 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* The demo admin login, under the form */
+.auth-demo {
+  display: grid;
+  gap: 10px;
+  padding: 16px 18px;
+  border: 1px dashed var(--sky);
+  border-radius: 10px;
+  background: #f4f9fd;
+}
+
+.auth-demo .auth-demo__title {   /* ".auth-demo" first, so the panel's paragraph style doesn't win */
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.auth-demo__list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  margin: 0;
+}
+
+.auth-demo__list dt {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.auth-demo__list dd {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  color: var(--navy);
+  user-select: all;   /* one click selects the whole value, ready to copy */
+}
+
+.auth-demo__fill {
+  justify-self: start;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  cursor: pointer;
+}
+
+.auth-demo__fill:hover {
+  border-color: var(--sky);
+}

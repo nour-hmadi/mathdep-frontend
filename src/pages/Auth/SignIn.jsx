@@ -5,6 +5,10 @@ import API_URL from "../../config";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import "./auth.css";
 
+// The demo admin, shown to every visitor so anyone (an interviewer, say) can open the dashboard.
+// The account is created on the server with: node make-demo-admin.js
+const DEMO = { email: "admin@example.com", password: "admin123" };
+
 // Sign in. The token and a few details are kept for this browser tab only (sessionStorage),
 // so closing the tab signs the user out. Admins go to the dashboard, students to the Math Community.
 function SignIn() {
@@ -14,6 +18,11 @@ function SignIn() {
   const [sending, setSending] = useState(false);
 
   const change = (event) => setForm({ ...form, [event.target.name]: event.target.value });
+
+  const fillDemo = () => {
+    setForm({ ...DEMO });
+    setError("");
+  };
 
   const signIn = (event) => {
     event.preventDefault();
@@ -44,6 +53,15 @@ function SignIn() {
           {error && <p className="auth-form__error" role="alert">{error}</p>}
           <button type="submit" className="site-button" disabled={sending}>{sending ? "Signing in…" : "Sign in"}</button>
           <p className="auth-form__switch">No account yet? <Link to="/registerusers">Create a student account</Link></p>
+
+          <div className="auth-demo">
+            <p className="auth-demo__title">For dashboard access, sign in as:</p>
+            <dl className="auth-demo__list">
+              <dt>Email</dt><dd>{DEMO.email}</dd>
+              <dt>Password</dt><dd>{DEMO.password}</dd>
+            </dl>
+            <button type="button" className="auth-demo__fill" onClick={fillDemo}>Fill in the demo login</button>
+          </div>
         </form>
       </div>
     </>
