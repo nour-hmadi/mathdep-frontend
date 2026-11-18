@@ -2,6 +2,7 @@
 .admin {
   display: grid;
   grid-template-columns: 210px 1fr;
+  max-width: 1600px;   /* wider than the other pages, so the tables have room */
   gap: var(--gutter);
   align-items: start;
 }
@@ -354,4 +355,10 @@
   .admin-form__row--three {
     grid-template-columns: 1fr;
   }
+}
+
+/* Slightly tighter cells in the dashboard tables */
+.admin .table th,
+.admin .table td {
+  padding: 10px 12px;
 }
