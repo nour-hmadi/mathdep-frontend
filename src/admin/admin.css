@@ -417,3 +417,21 @@
 .data-table__you {
   color: var(--ink-soft);
 }
+
+/* Gallery: a small picture in the table, and a preview in the pop-up */
+.data-table__picture {
+  display: block;
+  width: 96px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: var(--mist);
+}
+
+.admin-form__preview {
+  width: 100%;
+  max-height: 240px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: var(--mist);
+}

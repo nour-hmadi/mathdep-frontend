@@ -5,6 +5,7 @@ import PendingPosts from "./PendingPosts";
 import News from "./News";
 import Staff from "./Staff";
 import Users from "./Users";
+import Gallery from "./Gallery";
 import "./admin.css";
 
 // The admin's workspace: one tab for each part of the site.
@@ -15,6 +16,7 @@ const TABS = [
   { id: "news", name: "News and events", Component: News },
   { id: "staff", name: "Teaching staff", Component: Staff },
   { id: "users", name: "Users", Component: Users },
+  { id: "gallery", name: "Gallery", Component: Gallery },
 ];
 
 function AdminDashboard() {
