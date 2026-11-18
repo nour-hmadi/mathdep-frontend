@@ -18,8 +18,8 @@ import NewsnEvents from "./pages/NewsnEvents";
 import MathCommunity from "./pages/MathCommunity";
 import Gallery from "./pages/Gallery";
 import ContactUs from "./pages/ContactUs";
-import Auth from "./pages/Auth/auth";
-import Register from "./pages/Auth/Register";
+import SignIn from "./pages/Auth/SignIn";
+import SignUp from "./pages/Auth/SignUp";
 import AdminDashboard from "./admin/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import "./App.css";
@@ -48,8 +48,8 @@ function App() {
             <Route path="/mathcommunity" element={<MathCommunity />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contactus" element={<ContactUs />} />
-            <Route path="/login" element={<Auth />} />
-            <Route path="/registerusers" element={<Register />} />
+            <Route path="/login" element={<SignIn />} />
+            <Route path="/registerusers" element={<SignUp />} />
             <Route path="/pendingposts" element={<Navigate to="/admin-dashboard" replace />} />
             <Route path="/admin-dashboard" element={<PrivateRoute><AdminDashboard /></PrivateRoute>} />
             <Route path="*" element={<NotFound />} />
