@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PageHeader from "../components/PageHeader/PageHeader";
 import Overview from "./Overview";
 import PendingPosts from "./PendingPosts";
+import News from "./News";
 import "./admin.css";
 
 // The admin's workspace: one tab for each part of the site.
@@ -9,6 +10,7 @@ import "./admin.css";
 const TABS = [
   { id: "overview", name: "Overview", Component: Overview },
   { id: "pending", name: "Pending posts", Component: PendingPosts },
+  { id: "news", name: "News and events", Component: News },
 ];
 
 function AdminDashboard() {

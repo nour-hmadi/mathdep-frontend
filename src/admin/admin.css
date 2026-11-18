@@ -104,3 +104,63 @@
     white-space: nowrap;
   }
 }
+
+/* Forms for adding and editing (News, Staff, Gallery...) */
+.admin-form {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.admin-form h3 {
+  margin: 0;
+}
+
+.admin-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.admin-form textarea {
+  resize: vertical;
+}
+
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus {
+  outline: 2px solid var(--sky);
+  border-color: transparent;
+}
+
+.admin-form__row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  gap: 12px;
+}
+
+.admin-form__message {
+  margin: 0;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+@media (max-width: 600px) {
+  .admin-form__row {
+    grid-template-columns: 1fr;
+  }
+}
