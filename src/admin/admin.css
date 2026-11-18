@@ -413,3 +413,7 @@
     grid-template-columns: 1fr;
   }
 }
+
+.data-table__you {
+  color: var(--ink-soft);
+}

@@ -17,7 +17,7 @@ function Overview({ openTab }) {
           count: news.data.data.filter((item) => item.status === "past-due").length },
         { tab: "news", section: "News and events", count: news.data.data.length },
         { tab: "staff", section: "Teaching staff", count: users.data.data.filter(isTeacher).length },
-        { tab: null, section: "User accounts", count: users.data.data.length },
+        { tab: "users", section: "User accounts", count: users.data.data.length },
       ]))
       .catch(() => setError(true));
   }, []);
